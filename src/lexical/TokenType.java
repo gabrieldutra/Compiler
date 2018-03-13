@@ -41,5 +41,7 @@ public enum TokenType {
     OR,         // '|'
     
     // others
-    NAME
+    NAME,
+    NUMBER,
+    STRING
 };
