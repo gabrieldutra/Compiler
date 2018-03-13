@@ -15,7 +15,12 @@ public enum TokenType {
     CLOSE_PAR,   // ')'
     
     // keywords
-    FUCTION,    // fuction def
+    IF,         // if
+    WHILE,      // while   
+    FUNCTION,    // fuction def
+    SYSTEM,     // var system
+    SELF,       // var self
+    ARGS,       // var args
     
     // operators
     DOT,        // '.'
@@ -27,8 +32,9 @@ public enum TokenType {
     MOD,        // '%'
     LESS,       // '<'
     GREATER,    // '>'
-    LESS_EQ,    // '>='
-    GREATER_EQ, // '<='
+    EQUAL,      // '=='
+    LESS_EQ,    // '<='
+    GREATER_EQ, // '>='
     NOT_EQ,     // '!='
     NOT,        // '!'
     AND,        // '&'
