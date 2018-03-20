@@ -20,6 +20,7 @@ class SymbolTable {
 
         // keywords
         st.put("if", TokenType.IF);
+        st.put("else", TokenType.ELSE);
         st.put("while", TokenType.WHILE);
         st.put("function", TokenType.FUNCTION);
         st.put("system", TokenType.SYSTEM);

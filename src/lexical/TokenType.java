@@ -16,6 +16,7 @@ public enum TokenType {
     
     // keywords
     IF,         // if
+    ELSE,       // else
     WHILE,      // while   
     FUNCTION,    // fuction def
     SYSTEM,     // var system

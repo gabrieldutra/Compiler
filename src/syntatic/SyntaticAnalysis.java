@@ -51,4 +51,78 @@ public class SyntaticAnalysis {
 
         System.exit(1);
     }
+    
+    // <code> ::= { <statement> }
+    private void procCode() {
+        
+    }
+    
+    // <statement> ::= <if> | <while> | <cmd>
+    private void procStatement() {
+        
+    }
+    
+    // <if> ::= if '(' <boolexpr> ')' '{' <code> '}' [else '{' <code> '}' ]
+    private void procIf() throws IOException {
+        matchToken(TokenType.IF);
+        matchToken(TokenType.OPEN_PAR);
+        procBoolExpr();
+        matchToken(TokenType.CLOSE_PAR);
+        matchToken(TokenType.OPEN_CUR);
+        procCode();
+        matchToken(TokenType.CLOSE_CUR);
+        if (current.type == TokenType.ELSE) {
+            matchToken(TokenType.ELSE);
+            matchToken(TokenType.OPEN_CUR);
+            procCode();
+            matchToken(TokenType.CLOSE_CUR);
+        }
+    }
+    
+    // <while> ::= while '(' <boolexpr> ')' '{' <code> '}'
+    private void procWhile() throws IOException {
+        matchToken(TokenType.WHILE);
+        matchToken(TokenType.OPEN_PAR);
+        procBoolExpr();
+        matchToken(TokenType.CLOSE_PAR);
+        matchToken(TokenType.OPEN_CUR);
+        procCode();
+        matchToken(TokenType.CLOSE_CUR);
+    }
+    
+    // <cmd> ::= <access> ( <assign> | <call> ) ';'
+    private void procCmd() throws IOException {
+        
+    }
+    
+    // <access> ::= <var> { '.' <name> }
+    private void procAccess() throws IOException {
+        procVar();
+        while (current.type == TokenType.DOT) {
+            matchToken(TokenType.DOT);
+            procName();
+            
+        }
+    }
+    
+    // <assign> ::= '=' <rhs>
+    private void procAssign() throws IOException {
+        
+    }
+    
+    // <call> ::= '(' [ <rhs> { ',' <rhs> } ] ')'
+    private void procCall() throws IOException {
+        
+    }
+    
+    // <boolexpr> ::= [ '!' ] <cmpexpr> [ ('&' | '|') <boolexpr> ]
+    private void procBoolExpr() {
+        
+    }
+    
+    
+    private void procName() {
+        
+    }
+    
 }
