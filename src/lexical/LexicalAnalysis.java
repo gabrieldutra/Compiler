@@ -39,7 +39,8 @@ public class LexicalAnalysis implements AutoCloseable {
             int c = input.read();
             switch(estado){
                 case 1:                    
-                    if(c == ' ' || c == '\t' || c == '\r') { // jump not desired characters
+                    // jump not desired characters
+                    if(c == ' ' || c == '\t' || c == '\r') { 
                         break;
                     } else if(c == '\n') { // sum line when finds '\n'
                         line++;
@@ -48,7 +49,9 @@ public class LexicalAnalysis implements AutoCloseable {
                         estado = 2;
                     } else if(Character.isDigit(c)){
                         lex.token += (char) c;
-                        lex.type = TokenType.NUMBER; // we already know the TokenType will be a Number because it's the only possible way
+                        // we already know the TokenType will be a Number 
+                        // because it's the only possible way
+                        lex.type = TokenType.NUMBER; 
                         estado = 5;
                     } else if(c == '<' || c == '>' || c == '!' || c == '='){
                         lex.token += (char) c;
@@ -92,6 +95,15 @@ public class LexicalAnalysis implements AutoCloseable {
                     estado = 9;
                     break;
                     
+                case 7:
+                    if (!Character.isLetter(c) && !Character.isDigit(c)) {
+                        input.unread(c);
+                        estado = 9;
+                        break;
+                    }
+                    
+                    lex.token += (char) c;
+                    estado = 7;
                 default:
                     break;
             }
