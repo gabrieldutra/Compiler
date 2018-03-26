@@ -53,13 +53,20 @@ public class SyntaticAnalysis {
     }
     
     // <code> ::= { <statement> }
-    private void procCode() {
-        
+    private void procCode() throws IOException{
+        matchToken(TokenType.OPEN_CUR);
+        procStatement();
+        matchToken(TokenType.CLOSE_CUR);
     }
     
     // <statement> ::= <if> | <while> | <cmd>
-    private void procStatement() {
-        
+    private void procStatement() throws IOException{
+        if (current.type == TokenType.IF) 
+            procIf(); // TODO: verificar isso
+        else if (current.type == TokenType.WHILE)
+            procWhile();
+        else
+            procCmd();
     }
     
     // <if> ::= if '(' <boolexpr> ')' '{' <code> '}' [else '{' <code> '}' ]
@@ -91,8 +98,14 @@ public class SyntaticAnalysis {
     }
     
     // <cmd> ::= <access> ( <assign> | <call> ) ';'
+    // TODO: Completar isso
     private void procCmd() throws IOException {
-        
+        procAccess();
+        if (current.type == TokenType.ATTRIB) 
+            procAssign();
+        else if (current.type == TokenType.OPEN_PAR)
+            procCall();
+        matchToken(TokenType.DOT_COMMA);
     }
     
     // <access> ::= <var> { '.' <name> }
@@ -101,25 +114,73 @@ public class SyntaticAnalysis {
         while (current.type == TokenType.DOT) {
             matchToken(TokenType.DOT);
             procName();
-            
         }
     }
     
     // <assign> ::= '=' <rhs>
     private void procAssign() throws IOException {
-        
+        matchToken(TokenType.ATTRIB);
+        procRhs();
     }
     
     // <call> ::= '(' [ <rhs> { ',' <rhs> } ] ')'
     private void procCall() throws IOException {
-        
+        matchToken(TokenType.OPEN_PAR);
+        procRhs();
+        while (current.type == TokenType.COMMA) {
+            matchToken(TokenType.COMMA);
+            procRhs();
+        }
+        matchToken(TokenType.CLOSE_PAR);
     }
     
     // <boolexpr> ::= [ '!' ] <cmpexpr> [ ('&' | '|') <boolexpr> ]
-    private void procBoolExpr() {
+    private void procBoolExpr() throws IOException{
+        if (current.type == TokenType.NOT)
+            matchToken(TokenType.NOT);
+        procCmpexpr();
+        // PAREI AQUI
+    }
+    
+    // <cmpexpr> ::= <expr> <relop> <expr>
+    private void procCmpexpr() {
         
     }
     
+    // <relop> ::= '==' | '!=' | '<' | '>' | '<=' | '>='
+    private void procRelop() {
+        
+    }
+    
+    // <rhs> ::= <function> | <expr>
+    private void procRhs() {
+        
+    }
+    
+    // <function>  ::= function '{' <code> [ return <rhs> ] '}'
+    private void procFunction() {
+    
+    }
+    
+    // <expr>      ::= <term> { ('+' | '-') <term> }
+    private void procExpr() {
+        
+    }
+    
+    // <term>      ::= <factor> { ('*' | '/' | '%') <factor> }
+    private void procTerm() {
+        
+    }
+    
+    // <factor> ::= <number> | <string> | <access> [ <call> ]
+    private void procFactor() {
+        
+    }
+    
+    // <var>       ::= system | self | args | <name>
+    private void procVar() {
+        
+    }
     
     private void procName() {
         
