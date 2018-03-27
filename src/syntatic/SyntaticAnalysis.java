@@ -127,11 +127,21 @@ public class SyntaticAnalysis {
     // <call> ::= '(' [ <rhs> { ',' <rhs> } ] ')'
     private void procCall() throws IOException {
         matchToken(TokenType.OPEN_PAR);
-        procRhs();
-        while (current.type == TokenType.COMMA) {
-            matchToken(TokenType.COMMA);
+        if (current.type == TokenType.FUNCTION
+         || current.type == TokenType.NUMBER
+         || current.type == TokenType.STRING
+         || current.type == TokenType.OPEN_PAR
+         || current.type == TokenType.SYSTEM
+         || current.type == TokenType.SELF
+         || current.type == TokenType.ARGS
+         || current.type == TokenType.NAME) {
             procRhs();
-        }
+            while (current.type == TokenType.COMMA) {
+                matchToken(TokenType.COMMA);
+                procRhs();
+            }
+        } 
+        
         matchToken(TokenType.CLOSE_PAR);
     }
 
@@ -175,7 +185,7 @@ public class SyntaticAnalysis {
         }
     }
 
-    // <function>  ::= function '{' <code> [ return <rhs> ] '}'
+    // <function>  ::= function '{' <code> [ return <rhs> ; ] '}'
     private void procFunction() throws IOException {
         matchToken(TokenType.FUNCTION);
         matchToken(TokenType.OPEN_CUR);
