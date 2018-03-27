@@ -19,6 +19,7 @@ public enum TokenType {
     ELSE,       // else
     WHILE,      // while   
     FUNCTION,    // fuction def
+    RETURN,      // return
     SYSTEM,     // var system
     SELF,       // var self
     ARGS,       // var args
