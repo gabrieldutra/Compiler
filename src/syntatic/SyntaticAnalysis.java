@@ -1,5 +1,6 @@
 package syntatic;
 
+import interpreter.command.AssignCommand;
 import java.io.IOException;
 import java.util.Map;
 import java.util.HashMap;
@@ -9,6 +10,10 @@ import lexical.TokenType;
 import lexical.LexicalAnalysis;
 
 import interpreter.command.Command;
+import interpreter.command.CommandsBlock;
+import interpreter.expr.*;
+import interpreter.util.*;
+import interpreter.value.*;
 
 public class SyntaticAnalysis {
 
@@ -53,21 +58,31 @@ public class SyntaticAnalysis {
     }
 
     // <code> ::= { <statement> }
-    private void procCode() throws IOException {
-        matchToken(TokenType.OPEN_CUR);
-        procStatement();
-        matchToken(TokenType.CLOSE_CUR);
+    private CommandsBlock procCode() throws IOException {
+        CommandsBlock cb = new CommandsBlock();
+        while (current.type == TokenType.IF 
+               || current.type == TokenType.WHILE
+               || current.type == TokenType.SYSTEM
+               || current.type == TokenType.ARGS
+               || current.type == TokenType.SELF
+               || current.type == TokenType.NAME) {
+            Command c = procStatement();
+            cb.addCommand(c);
+        }
+        return cb;
     }
 
     // <statement> ::= <if> | <while> | <cmd>
-    private void procStatement() throws IOException {
+    private Command procStatement() throws IOException {
+        Command cmd = null;
         if (current.type == TokenType.IF) {
             procIf(); // TODO: verificar isso
         } else if (current.type == TokenType.WHILE) {
             procWhile();
         } else {
-            procCmd();
+            cmd = procCmd();
         }
+        return cmd;
     }
 
     // <if> ::= if '(' <boolexpr> ')' '{' <code> '}' [else '{' <code> '}' ]
@@ -99,23 +114,32 @@ public class SyntaticAnalysis {
     }
 
     // <cmd> ::= <access> ( <assign> | <call> ) ';'
-    private void procCmd() throws IOException {
-        procAccess();
+    private AssignCommand procCmd() throws IOException {
+        AccessPath path = procAccess();
+
+        AssignCommand ac = null;
         if (current.type == TokenType.ATTRIB) {
             procAssign();
         } else if (current.type == TokenType.OPEN_PAR) {
-            procCall();
+            int line = lex.getLine();
+            FunctionCallExpr fce = procCall(path);
+            ac = new AssignCommand(null, fce, line);
         }
         matchToken(TokenType.DOT_COMMA);
+        return ac;
     }
 
     // <access> ::= <var> { '.' <name> }
-    private void procAccess() throws IOException {
-        procVar();
+    private AccessPath procAccess() throws IOException {
+        int line = lex.getLine();
+        String name = procVar();
+        AccessPath path = new AccessPath(name, line);
         while (current.type == TokenType.DOT) {
             matchToken(TokenType.DOT);
-            procName();
+            name = procName();
+            path.addName(name);
         }
+        return path;
     }
 
     // <assign> ::= '=' <rhs>
@@ -125,24 +149,28 @@ public class SyntaticAnalysis {
     }
 
     // <call> ::= '(' [ <rhs> { ',' <rhs> } ] ')'
-    private void procCall() throws IOException {
+    private FunctionCallExpr procCall(AccessPath path) throws IOException {
+        FunctionCallExpr fce = new FunctionCallExpr(path, lex.getLine());
         matchToken(TokenType.OPEN_PAR);
         if (current.type == TokenType.FUNCTION
-         || current.type == TokenType.NUMBER
-         || current.type == TokenType.STRING
-         || current.type == TokenType.OPEN_PAR
-         || current.type == TokenType.SYSTEM
-         || current.type == TokenType.SELF
-         || current.type == TokenType.ARGS
-         || current.type == TokenType.NAME) {
-            procRhs();
+                || current.type == TokenType.NUMBER
+                || current.type == TokenType.STRING
+                || current.type == TokenType.OPEN_PAR
+                || current.type == TokenType.SYSTEM
+                || current.type == TokenType.SELF
+                || current.type == TokenType.ARGS
+                || current.type == TokenType.NAME) {
+            Rhs rhs = procRhs();
+            fce.addParam(rhs);
             while (current.type == TokenType.COMMA) {
                 matchToken(TokenType.COMMA);
-                procRhs();
+                rhs = procRhs();
+                fce.addParam(rhs);
             }
-        } 
-        
+        }
+
         matchToken(TokenType.CLOSE_PAR);
+        return fce;
     }
 
     // <boolexpr> ::= [ '!' ] <cmpexpr> [ ('&' | '|') <boolexpr> ]
@@ -177,12 +205,14 @@ public class SyntaticAnalysis {
     }
 
     // <rhs> ::= <function> | <expr>
-    private void procRhs() throws IOException {
+    private Rhs procRhs() throws IOException {
+        Rhs rhs = null;
         if (current.type == TokenType.FUNCTION) {
             procFunction();
         } else {
-            procExpr();
+            rhs = procExpr();
         }
+        return rhs;
     }
 
     // <function>  ::= function '{' <code> [ return <rhs> ; ] '}'
@@ -198,54 +228,86 @@ public class SyntaticAnalysis {
     }
 
     // <expr>      ::= <term> { ('+' | '-') <term> }
-    private void procExpr() throws IOException {
-        procTerm();
+    private Expr procExpr() throws IOException {
+        Expr e = procTerm();
         while (current.type == TokenType.PLUS || current.type == TokenType.MINUS) {
             matchToken(current.type);
             procTerm();
         }
+        return e;
     }
 
     // <term>      ::= <factor> { ('*' | '/' | '%') <factor> }
-    private void procTerm() throws IOException {
-        procFactor();
+    private Expr procTerm() throws IOException {
+        Expr e = procFactor();
         while (current.type == TokenType.MULT || current.type == TokenType.DIV
                 || current.type == TokenType.MOD) {
             matchToken(current.type);
             procFactor();
         }
+        return e;
     }
 
-    // <factor> ::= <number> | <string> | <access> [ <call> ]
-    private void procFactor() throws IOException {
+    // <factor> ::= <number> | <string> | <access> [ <call> ] | '(' <expr> ')'
+    private Expr procFactor() throws IOException {
+        Expr e = null;
         if (current.type == TokenType.NUMBER) {
-            procNumber();
+            e = procNumber();
         } else if (current.type == TokenType.STRING) {
-            matchToken(TokenType.STRING);
+            e = procString();
+        } else if (current.type == TokenType.OPEN_PAR) {
+            matchToken(TokenType.OPEN_PAR);
+            procExpr();
+            matchToken(TokenType.CLOSE_PAR);
         } else {
-            procAccess();
-            if (current.type == TokenType.OPEN_CUR) {
-                procCall();
+            AccessPath path = procAccess();
+            if (current.type == TokenType.OPEN_PAR) {
+                procCall(path);
             }
         }
-        
+        return e;
     }
 
-    private void procNumber() throws IOException {
+    private ConstExpr procNumber() throws IOException {
+        int line = lex.getLine();
+        String tmp = current.token;
         matchToken(TokenType.NUMBER);
+        int n = Integer.parseInt(tmp);
+        IntegerValue iv = new IntegerValue(n);
+        ConstExpr ce = new ConstExpr(iv, line);
+        return ce;
+    }
+
+    private ConstExpr procString() throws IOException {
+        int line = lex.getLine();
+        String tmp = current.token;
+        matchToken(TokenType.STRING);
+        StringValue sv = new StringValue(tmp);
+        ConstExpr ce = new ConstExpr(sv, line);
+        return ce;
     }
 
     // <var>       ::= system | self | args | <name>
-    private void procVar() throws IOException {
-        if (current.type == TokenType.SYSTEM || current.type == TokenType.SELF || current.type == TokenType.ARGS) {
-            matchToken(current.type);
+    private String procVar() throws IOException {
+        String var = null;
+        if (current.type == TokenType.SYSTEM) {
+            matchToken(TokenType.SYSTEM);
+            var = "system";
+        } else if (current.type == TokenType.SELF) {
+            matchToken(TokenType.SELF);
+            var = "self";
+        } else if (current.type == TokenType.ARGS) {
+            matchToken(TokenType.ARGS);
+            var = "args";
         } else {
-            procName();
+            var = procName();
         }
+        return var;
     }
 
-    private void procName() throws IOException {
+    private String procName() throws IOException {
         matchToken(TokenType.NAME);
+        return current.token;
     }
 
 }
