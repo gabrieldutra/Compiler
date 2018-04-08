@@ -1,3 +1,4 @@
+import interpreter.command.AssignCommand;
 import lexical.Lexeme;
 import lexical.LexicalAnalysis;
 import lexical.TokenType;
@@ -6,6 +7,8 @@ import lexical.LexicalException;
 import syntatic.SyntaticAnalysis;
 
 import interpreter.command.Command;
+import interpreter.util.Arguments;
+import interpreter.util.Instance;
 
 public class sooi {
 
@@ -19,11 +22,13 @@ public class sooi {
 
             // O código a seguir é dado para testar o interpretador.
             // TODO: descomentar depois que o analisador léxico estiver OK.
-            /*
+            
             SyntaticAnalysis s = new SyntaticAnalysis(l);
             Command c = s.start();
-            c.execute();
-            */
+            c.execute(null,null);
+            Command c2 = s.start();
+            c2.execute(null,null);
+            
 
             // O código a seguir é usado apenas para testar o analisador léxico.
             // TODO: depois de pronto, comentar o código abaixo.

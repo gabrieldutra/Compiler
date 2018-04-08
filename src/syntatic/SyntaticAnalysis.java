@@ -26,7 +26,8 @@ public class SyntaticAnalysis {
     }
 
     public Command start() throws IOException {
-        return null;
+        
+        return procStatement();
     }
 
     private void matchToken(TokenType type) throws IOException {
@@ -74,12 +75,14 @@ public class SyntaticAnalysis {
 
     // <statement> ::= <if> | <while> | <cmd>
     private Command procStatement() throws IOException {
+        System.out.println("Statement - "+current.token);
         Command cmd = null;
         if (current.type == TokenType.IF) {
             procIf(); // TODO: verificar isso
         } else if (current.type == TokenType.WHILE) {
             procWhile();
         } else {
+            System.out.println("Go to cmd");
             cmd = procCmd();
         }
         return cmd;
@@ -115,12 +118,17 @@ public class SyntaticAnalysis {
 
     // <cmd> ::= <access> ( <assign> | <call> ) ';'
     private AssignCommand procCmd() throws IOException {
+        System.out.println("procCmd - " + current.token);
         AccessPath path = procAccess();
+        System.out.println("Path: " + path);
 
         AssignCommand ac = null;
         if (current.type == TokenType.ATTRIB) {
-            procAssign();
+            System.out.println(current.token);
+            ac = procAssign(path);
+            System.out.println(current.token);
         } else if (current.type == TokenType.OPEN_PAR) {
+            System.out.println("Proc Call");
             int line = lex.getLine();
             FunctionCallExpr fce = procCall(path);
             ac = new AssignCommand(null, fce, line);
@@ -143,13 +151,19 @@ public class SyntaticAnalysis {
     }
 
     // <assign> ::= '=' <rhs>
-    private void procAssign() throws IOException {
+    private AssignCommand procAssign(AccessPath path) throws IOException {
         matchToken(TokenType.ATTRIB);
-        procRhs();
+        System.out.println("Assign - "+current.token);
+        int line = lex.getLine();
+        Rhs rhs = procRhs();
+        AssignCommand ac = new AssignCommand(path, rhs, line);
+        return ac;
     }
 
     // <call> ::= '(' [ <rhs> { ',' <rhs> } ] ')'
     private FunctionCallExpr procCall(AccessPath path) throws IOException {
+        System.out.println("Proc Call - " + current.token);
+        System.out.println("Path - " + path);
         FunctionCallExpr fce = new FunctionCallExpr(path, lex.getLine());
         matchToken(TokenType.OPEN_PAR);
         if (current.type == TokenType.FUNCTION
@@ -160,7 +174,9 @@ public class SyntaticAnalysis {
                 || current.type == TokenType.SELF
                 || current.type == TokenType.ARGS
                 || current.type == TokenType.NAME) {
+            System.out.println(current.token);
             Rhs rhs = procRhs();
+            System.out.println(rhs);
             fce.addParam(rhs);
             while (current.type == TokenType.COMMA) {
                 matchToken(TokenType.COMMA);
@@ -206,6 +222,7 @@ public class SyntaticAnalysis {
 
     // <rhs> ::= <function> | <expr>
     private Rhs procRhs() throws IOException {
+        System.out.println("Proc Rhs");
         Rhs rhs = null;
         if (current.type == TokenType.FUNCTION) {
             procFunction();
@@ -229,6 +246,7 @@ public class SyntaticAnalysis {
 
     // <expr>      ::= <term> { ('+' | '-') <term> }
     private Expr procExpr() throws IOException {
+        System.out.println("Proc Expr");
         Expr e = procTerm();
         while (current.type == TokenType.PLUS || current.type == TokenType.MINUS) {
             matchToken(current.type);
@@ -239,6 +257,7 @@ public class SyntaticAnalysis {
 
     // <term>      ::= <factor> { ('*' | '/' | '%') <factor> }
     private Expr procTerm() throws IOException {
+        System.out.println("Proc Term");
         Expr e = procFactor();
         while (current.type == TokenType.MULT || current.type == TokenType.DIV
                 || current.type == TokenType.MOD) {
@@ -250,6 +269,7 @@ public class SyntaticAnalysis {
 
     // <factor> ::= <number> | <string> | <access> [ <call> ] | '(' <expr> ')'
     private Expr procFactor() throws IOException {
+        System.out.println("Proc Factor");
         Expr e = null;
         if (current.type == TokenType.NUMBER) {
             e = procNumber();
@@ -260,10 +280,13 @@ public class SyntaticAnalysis {
             procExpr();
             matchToken(TokenType.CLOSE_PAR);
         } else {
+            int line = lex.getLine();
             AccessPath path = procAccess();
+            AccessExpr ae = new AccessExpr(path, line);
             if (current.type == TokenType.OPEN_PAR) {
                 procCall(path);
             }
+            e = ae;
         }
         return e;
     }
@@ -275,6 +298,7 @@ public class SyntaticAnalysis {
         int n = Integer.parseInt(tmp);
         IntegerValue iv = new IntegerValue(n);
         ConstExpr ce = new ConstExpr(iv, line);
+        System.out.println("Proc Number - "+n);
         return ce;
     }
 
@@ -306,8 +330,12 @@ public class SyntaticAnalysis {
     }
 
     private String procName() throws IOException {
-        matchToken(TokenType.NAME);
-        return current.token;
+        String name = current.token;
+        if (current.type == TokenType.NAME){
+            matchToken(TokenType.NAME);
+            return name;            
+        }
+        return null;
     }
 
 }
