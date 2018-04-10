@@ -37,8 +37,8 @@ public class SpecialFunction extends Function {
     }
 
     private Value<?> print(Arguments args) {
-        if (args.contains("args1")) {
-            Value<?> v = args.getValue("args1");
+        if (args.contains("arg1")) {
+            Value<?> v = args.getValue("arg1");
             if (v instanceof IntegerValue) {
                 IntegerValue iv = (IntegerValue) v;
                 System.out.print(v.value());

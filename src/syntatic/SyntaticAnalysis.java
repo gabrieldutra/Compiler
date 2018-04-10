@@ -13,21 +13,36 @@ import interpreter.expr.*;
 import interpreter.util.*;
 import interpreter.value.*;
 
+/**
+ * Implementacao da análise sintatica
+ *
+ * @author gabrieldutra e MarceloFCandido
+ */
 public class SyntaticAnalysis {
 
     private LexicalAnalysis lex;
     private Lexeme current;
 
+    /**
+     *
+     * @param lex
+     * @throws IOException
+     */
     public SyntaticAnalysis(LexicalAnalysis lex) throws IOException {
         this.lex = lex;
         this.current = lex.nextToken();
     }
 
     public Command start() throws IOException {
-        
-        return procStatement();
+        Command c = procCode();
+        matchToken(TokenType.END_OF_FILE);
+        return c;
     }
 
+    /*
+     * Marca o lexema corrente com o tipo passado por parametro, caso se trate 
+     * do tipo correto
+     */
     private void matchToken(TokenType type) throws IOException {
         // System.out.println("Match token: " + current.type + " == " + type + "?");
         if (type == current.type) {
@@ -37,6 +52,10 @@ public class SyntaticAnalysis {
         }
     }
 
+    /*
+     * Exibe uma determinada mensagem de acordo com o tipo de erro passado por
+     * parametro
+     */
     private void showError() {
         System.out.printf("%02d: ", lex.getLine());
 
@@ -56,15 +75,18 @@ public class SyntaticAnalysis {
         System.exit(1);
     }
 
+    /*
+     * 
+     */
     // <code> ::= { <statement> }
     private CommandsBlock procCode() throws IOException {
         CommandsBlock cb = new CommandsBlock();
-        while (current.type == TokenType.IF 
-               || current.type == TokenType.WHILE
-               || current.type == TokenType.SYSTEM
-               || current.type == TokenType.ARGS
-               || current.type == TokenType.SELF
-               || current.type == TokenType.NAME) {
+        while (current.type == TokenType.IF
+                || current.type == TokenType.WHILE
+                || current.type == TokenType.SYSTEM
+                || current.type == TokenType.ARGS
+                || current.type == TokenType.SELF
+                || current.type == TokenType.NAME) {
             Command c = procStatement();
             cb.addCommand(c);
         }
@@ -268,7 +290,7 @@ public class SyntaticAnalysis {
                 e = procCall(path);
             } else {
                 AccessExpr ae = new AccessExpr(path, line);
-                e = ae;                
+                e = ae;
             }
         }
         return e;
@@ -313,9 +335,9 @@ public class SyntaticAnalysis {
 
     private String procName() throws IOException {
         String name = current.token;
-        if (current.type == TokenType.NAME){
+        if (current.type == TokenType.NAME) {
             matchToken(TokenType.NAME);
-            return name;            
+            return name;
         }
         return null;
     }

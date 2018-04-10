@@ -22,28 +22,26 @@ public class sooi {
             SyntaticAnalysis s = new SyntaticAnalysis(l);
             Command c = s.start();
             c.execute(null,null);
-            Command c2 = s.start();
-            c2.execute(null,null);
             
 
             // O código a seguir é usado apenas para testar o analisador léxico.
             // TODO: depois de pronto, comentar o código abaixo.
-            Lexeme lex;
-            while (checkType((lex = l.nextToken()).type)) {
-                System.out.printf("(\"%s\", %s)\n", lex.token, lex.type);
-            }
-
-            switch (lex.type) {
-                case INVALID_TOKEN:
-                    System.out.printf("%02d: Lexema inválido [%s]\n", l.getLine(), lex.token);
-                    break;
-                case UNEXPECTED_EOF:
-                    System.out.printf("%02d: Fim de arquivo inesperado\n", l.getLine());
-                    break;
-                default:
-                    System.out.printf("(\"%s\", %s)\n", lex.token, lex.type);
-                    break;
-            }
+//            Lexeme lex;
+//            while (checkType((lex = l.nextToken()).type)) {
+//                System.out.printf("(\"%s\", %s)\n", lex.token, lex.type);
+//            }
+//
+//            switch (lex.type) {
+//                case INVALID_TOKEN:
+//                    System.out.printf("%02d: Lexema inválido [%s]\n", l.getLine(), lex.token);
+//                    break;
+//                case UNEXPECTED_EOF:
+//                    System.out.printf("%02d: Fim de arquivo inesperado\n", l.getLine());
+//                    break;
+//                default:
+//                    System.out.printf("(\"%s\", %s)\n", lex.token, lex.type);
+//                    break;
+//            }
         } catch (Exception e) {
             System.err.println("Internal error: " + e.getMessage());
         }
