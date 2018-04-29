@@ -2,19 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="82da4538-37b1-4b36-bffd-4957c15e8870" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/src/interpreter/expr/BoolExpr.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/interpreter/expr/BoolExpr.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/interpreter/expr/BoolOp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/interpreter/expr/BoolOp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/interpreter/expr/FunctionCallExpr.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/interpreter/expr/FunctionCallExpr.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/interpreter/expr/NotBoolExpr.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/interpreter/expr/NotBoolExpr.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/interpreter/expr/RelOp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/interpreter/expr/RelOp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/interpreter/util/AccessPath.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/interpreter/util/AccessPath.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/interpreter/util/Memory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/interpreter/util/Memory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/interpreter/util/SpecialFunction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/interpreter/util/SpecialFunction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/interpreter/value/Value.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/interpreter/value/Value.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/lexical/SymbolTable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lexical/SymbolTable.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/lexical/TokenType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lexical/TokenType.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sooi.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sooi.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/syntatic/SyntaticAnalysis.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/syntatic/SyntaticAnalysis.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -26,47 +14,20 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="FunctionValue.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/interpreter/value/FunctionValue.java">
+      <file leaf-file-name="example.soo" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/example.soo">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="60">
-              <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
+            <state>
+              <caret column="29" lean-forward="true" selection-start-column="29" selection-end-column="29" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="InstanceValue.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/interpreter/value/InstanceValue.java">
+      <file leaf-file-name=".gitignore" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/.gitignore">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="60">
-              <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="IntegerValue.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/interpreter/value/IntegerValue.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="30">
-              <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="StringValue.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/interpreter/value/StringValue.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="30">
-              <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Value.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/interpreter/value/Value.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="150">
-              <caret line="10" lean-forward="true" selection-start-line="10" selection-end-line="10" />
+            <state relative-caret-position="422">
+              <caret line="34" column="5" selection-start-line="34" selection-start-column="5" selection-end-line="34" selection-end-column="5" />
             </state>
           </provider>
         </entry>
@@ -92,13 +53,15 @@
         <option value="$PROJECT_DIR$/src/interpreter/util/AccessPath.java" />
         <option value="$PROJECT_DIR$/src/interpreter/expr/RelOp.java" />
         <option value="$PROJECT_DIR$/src/interpreter/value/Value.java" />
+        <option value="$PROJECT_DIR$/example.soo" />
+        <option value="$PROJECT_DIR$/.gitignore" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
     <option name="x" value="62" />
     <option name="y" value="51" />
-    <option name="width" value="1221" />
+    <option name="width" value="1222" />
     <option name="height" value="633" />
   </component>
   <component name="ProjectView">
@@ -113,57 +76,6 @@
             <path>
               <item name="SmallOO" type="b2602c69:ProjectViewProjectNode" />
               <item name="SmallOO" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="SmallOO" type="b2602c69:ProjectViewProjectNode" />
-              <item name="SmallOO" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="SmallOO" type="b2602c69:ProjectViewProjectNode" />
-              <item name="SmallOO" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="interpreter" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="SmallOO" type="b2602c69:ProjectViewProjectNode" />
-              <item name="SmallOO" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="interpreter" type="462c0819:PsiDirectoryNode" />
-              <item name="command" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="SmallOO" type="b2602c69:ProjectViewProjectNode" />
-              <item name="SmallOO" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="interpreter" type="462c0819:PsiDirectoryNode" />
-              <item name="expr" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="SmallOO" type="b2602c69:ProjectViewProjectNode" />
-              <item name="SmallOO" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="interpreter" type="462c0819:PsiDirectoryNode" />
-              <item name="util" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="SmallOO" type="b2602c69:ProjectViewProjectNode" />
-              <item name="SmallOO" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="interpreter" type="462c0819:PsiDirectoryNode" />
-              <item name="value" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="SmallOO" type="b2602c69:ProjectViewProjectNode" />
-              <item name="SmallOO" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="lexical" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="SmallOO" type="b2602c69:ProjectViewProjectNode" />
-              <item name="SmallOO" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="syntatic" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -186,6 +98,12 @@
     </option>
   </component>
   <component name="RunManager">
+    <configuration name="SmallOO" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="sooi" />
+      <module name="SmallOO" />
+      <option name="PROGRAM_PARAMETERS" value="example.soo" />
+      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
+    </configuration>
     <configuration default="true" type="Application" factoryName="Application">
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
     </configuration>
@@ -242,22 +160,23 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="62" y="51" width="1221" height="633" extended-state="0" />
+    <frame x="62" y="51" width="1222" height="633" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info anchor="right" id="Palette" />
       <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Messages" />
       <window_info anchor="right" id="Palette&#9;" />
       <window_info id="Image Layers" />
       <window_info anchor="right" id="Capture Analysis" />
       <window_info anchor="bottom" id="Event Log" side_tool="true" />
       <window_info anchor="right" id="Maven Projects" />
-      <window_info anchor="bottom" id="Run" order="2" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.3288719" />
       <window_info anchor="bottom" id="Version Control" />
       <window_info anchor="bottom" id="Terminal" />
       <window_info id="Capture Tool" />
       <window_info id="Designer" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24979524" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24959083" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info id="UI Designer" />
@@ -469,24 +388,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/interpreter/value/FunctionValue.java">
+    <entry file="file://$PROJECT_DIR$/src/interpreter/value/Value.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/interpreter/value/InstanceValue.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/interpreter/value/IntegerValue.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+        <state relative-caret-position="150">
+          <caret line="10" lean-forward="true" selection-start-line="10" selection-end-line="10" />
         </state>
       </provider>
     </entry>
@@ -497,10 +402,38 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/interpreter/value/Value.java">
+    <entry file="file://$PROJECT_DIR$/src/interpreter/value/IntegerValue.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="10" lean-forward="true" selection-start-line="10" selection-end-line="10" />
+        <state relative-caret-position="30">
+          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/interpreter/value/InstanceValue.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/interpreter/value/FunctionValue.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/example.soo">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="29" lean-forward="true" selection-start-column="29" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="422">
+          <caret line="34" column="5" selection-start-line="34" selection-start-column="5" selection-end-line="34" selection-end-column="5" />
         </state>
       </provider>
     </entry>
