@@ -1,7 +1,7 @@
 package interpreter.command;
 
-import interpreter.util.Instance;
 import interpreter.util.Arguments;
+import interpreter.util.Instance;
 
 public abstract class Command {
 

@@ -1,7 +1,6 @@
 package interpreter.util;
 
 import interpreter.value.Value;
-import interpreter.value.IntegerValue;
 
 public abstract class Function {
 

@@ -1,10 +1,10 @@
 package interpreter.command;
 
-import java.util.List;
-import java.util.ArrayList;
-
-import interpreter.util.Instance;
 import interpreter.util.Arguments;
+import interpreter.util.Instance;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class CommandsBlock extends Command {
 
@@ -20,9 +20,11 @@ public class CommandsBlock extends Command {
         cmds.add(c);
     }
 
+    @Override
     public void execute(Instance self, Arguments args) {
-        for (Command c : cmds)
+        for (Command c : cmds) {
             c.execute(self, args);
+        }
     }
 
 }

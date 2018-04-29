@@ -18,8 +18,9 @@ public class Global extends Memory {
     }
 
     public static Global getGlobalTable() {
-        if (global == null)
+        if (global == null) {
             global = new Global();
+        }
 
         return global;
     }

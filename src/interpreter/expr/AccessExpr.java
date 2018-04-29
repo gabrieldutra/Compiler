@@ -1,8 +1,8 @@
 package interpreter.expr;
 
-import interpreter.util.Instance;
-import interpreter.util.Arguments;
 import interpreter.util.AccessPath;
+import interpreter.util.Arguments;
+import interpreter.util.Instance;
 import interpreter.value.Value;
 
 public class AccessExpr extends Expr {
@@ -14,6 +14,7 @@ public class AccessExpr extends Expr {
         this.path = path;
     }
 
+    @Override
     public Value<?> rhs(Instance self, Arguments args) {
         return path.getValue(self, args);
     }

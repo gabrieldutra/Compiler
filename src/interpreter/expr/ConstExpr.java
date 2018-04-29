@@ -1,7 +1,7 @@
 package interpreter.expr;
 
-import interpreter.util.Instance;
 import interpreter.util.Arguments;
+import interpreter.util.Instance;
 import interpreter.value.Value;
 
 public class ConstExpr extends Expr {
@@ -13,6 +13,7 @@ public class ConstExpr extends Expr {
         this.value = value;
     }
 
+    @Override
     public Value<?> rhs(Instance self, Arguments args) {
         return value;
     }

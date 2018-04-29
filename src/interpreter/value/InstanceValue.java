@@ -10,6 +10,7 @@ public class InstanceValue extends Value<Instance> {
         this.value = value;
     }
 
+    @Override
     public Instance value() {
         return value;
     }

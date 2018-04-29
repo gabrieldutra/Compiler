@@ -1,10 +1,7 @@
-import lexical.Lexeme;
+import interpreter.command.Command;
 import lexical.LexicalAnalysis;
 import lexical.TokenType;
-
 import syntatic.SyntaticAnalysis;
-
-import interpreter.command.Command;
 
 public class sooi {
 

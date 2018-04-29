@@ -1,15 +1,11 @@
 package interpreter.expr;
 
-import interpreter.util.Function;
-import interpreter.util.Instance;
-import interpreter.util.Arguments;
-import interpreter.util.AccessPath;
-import interpreter.util.InterpreterError;
-import interpreter.value.Value;
+import interpreter.util.*;
 import interpreter.value.FunctionValue;
+import interpreter.value.Value;
 
-import java.util.List;
 import java.util.ArrayList;
+import java.util.List;
 
 public class FunctionCallExpr extends Expr {
 
@@ -27,10 +23,12 @@ public class FunctionCallExpr extends Expr {
         params.add(rhs);
     }
 
+    @Override
     public Value<?> rhs(Instance self, Arguments args) {
         Value<?> funct = path.getValue(self, args);
-        if (!(funct instanceof FunctionValue))
+        if (!(funct instanceof FunctionValue)) {
             InterpreterError.abort(this.getLine());
+        }
 
         Function f = ((FunctionValue) funct).value();
 

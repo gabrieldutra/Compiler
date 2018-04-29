@@ -1,7 +1,7 @@
 package interpreter.expr;
 
-import interpreter.util.Instance;
 import interpreter.util.Arguments;
+import interpreter.util.Instance;
 import interpreter.value.Value;
 
 public abstract class Expr extends Rhs {
@@ -10,6 +10,7 @@ public abstract class Expr extends Rhs {
         super(line);
     }
 
+    @Override
     public abstract Value<?> rhs(Instance self, Arguments args);
 
 }

@@ -1,10 +1,10 @@
 package interpreter.util;
 
-import interpreter.value.Value;
 import interpreter.value.IntegerValue;
+import interpreter.value.Value;
 
-import java.util.Map;
 import java.util.HashMap;
+import java.util.Map;
 
 public class Memory {
 

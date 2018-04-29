@@ -1,11 +1,11 @@
 package interpreter.util;
 
-import java.util.List;
-import java.util.ArrayList;
-
-import interpreter.value.Value;
-import interpreter.value.IntegerValue;
 import interpreter.value.InstanceValue;
+import interpreter.value.IntegerValue;
+import interpreter.value.Value;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class AccessPath {
 
@@ -51,15 +51,17 @@ public class AccessPath {
 
         name = names.get(0);
         if (name.equals("self")) {
-            if (self == null)
+            if (self == null) {
                 InterpreterError.abort(line);
+            }
 
             ref = self;
             i = 1;
         } else if (name.equals("args")) {
             ref = args;
-            if (self == null)
+            if (self == null) {
                 InterpreterError.abort(line);
+            }
 
             i = 1;
         } else {
@@ -86,10 +88,12 @@ public class AccessPath {
         return ref;
     }
 
+    @Override
     public String toString() {
         StringBuffer sb = new StringBuffer(names.get(0));
-        for (int i = 1; i < names.size(); i++)
+        for (int i = 1; i < names.size(); i++) {
             sb.append(".").append(names.get(i));
+        }
 
         return sb.toString();
     }

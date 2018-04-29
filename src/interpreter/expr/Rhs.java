@@ -1,7 +1,7 @@
 package interpreter.expr;
 
-import interpreter.util.Instance;
 import interpreter.util.Arguments;
+import interpreter.util.Instance;
 import interpreter.value.Value;
 
 public abstract class Rhs {

@@ -1,18 +1,17 @@
 package syntatic;
 
 import interpreter.command.AssignCommand;
-
-import java.io.IOException;
-
-import lexical.Lexeme;
-import lexical.TokenType;
-import lexical.LexicalAnalysis;
-
 import interpreter.command.Command;
 import interpreter.command.CommandsBlock;
 import interpreter.expr.*;
-import interpreter.util.*;
-import interpreter.value.*;
+import interpreter.util.AccessPath;
+import interpreter.value.IntegerValue;
+import interpreter.value.StringValue;
+import lexical.Lexeme;
+import lexical.LexicalAnalysis;
+import lexical.TokenType;
+
+import java.io.IOException;
 
 /**
  * Implementacao da análise sintatica

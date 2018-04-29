@@ -1,10 +1,10 @@
 package interpreter.util;
 
-import java.util.Scanner;
-
-import interpreter.value.Value;
 import interpreter.value.IntegerValue;
 import interpreter.value.StringValue;
+import interpreter.value.Value;
+
+import java.util.Scanner;
 
 public class SpecialFunction extends Function {
 
@@ -16,6 +16,7 @@ public class SpecialFunction extends Function {
         this.in = new Scanner(System.in);
     }
 
+    @Override
     public Value<?> call(Instance self, Arguments args) {
         Value<?> v;
 
