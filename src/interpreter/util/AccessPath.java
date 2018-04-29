@@ -89,7 +89,7 @@ public class AccessPath {
     public String toString() {
         StringBuffer sb = new StringBuffer(names.get(0));
         for (int i = 1; i < names.size(); i++)
-          sb.append(".").append(names.get(i));
+            sb.append(".").append(names.get(i));
 
         return sb.toString();
     }

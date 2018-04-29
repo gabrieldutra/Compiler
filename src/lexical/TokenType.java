@@ -13,7 +13,7 @@ public enum TokenType {
     CLOSE_CUR,   // '}'
     OPEN_PAR,    // '('
     CLOSE_PAR,   // ')'
-    
+
     // keywords
     IF,         // if
     ELSE,       // else
@@ -23,7 +23,7 @@ public enum TokenType {
     SYSTEM,     // var system
     SELF,       // var self
     ARGS,       // var args
-    
+
     // operators
     DOT,        // '.'
     ATTRIB,     // '='
@@ -41,7 +41,7 @@ public enum TokenType {
     NOT,        // '!'
     AND,        // '&'
     OR,         // '|'
-    
+
     // others
     NAME,
     NUMBER,

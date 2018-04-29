@@ -2,9 +2,9 @@ package interpreter.value;
 
 public abstract class Value<T> {
 
-  protected Value() {
-  }
+    protected Value() {
+    }
 
-  public abstract T value();
+    public abstract T value();
 
 }

@@ -8,10 +8,10 @@ import java.util.HashMap;
 
 public class Memory {
 
-    private Map<String,Value<?>> memory;
+    private Map<String, Value<?>> memory;
 
     protected Memory() {
-        memory = new HashMap<String,Value<?>>();
+        memory = new HashMap<String, Value<?>>();
     }
 
     public boolean contains(String name) {

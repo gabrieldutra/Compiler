@@ -4,12 +4,11 @@ import interpreter.util.Arguments;
 import interpreter.util.Instance;
 
 /**
- *
- * @author gdutra
+ * @author gabrieldutra
  */
 public abstract class BoolExpr {
     private final int line;
-    
+
     protected BoolExpr(int line) {
         this.line = line;
     }
@@ -20,7 +19,7 @@ public abstract class BoolExpr {
     public int getLine() {
         return line;
     }
-    
+
     public abstract boolean expr(Instance self, Arguments args);
-    
+
 }

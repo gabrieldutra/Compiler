@@ -65,12 +65,12 @@ public class SpecialFunction extends Function {
 
         String str = in.nextLine();
         try {
-           int n = Integer.parseInt(str);
-           IntegerValue iv = new IntegerValue(n);
-           return iv;
+            int n = Integer.parseInt(str);
+            IntegerValue iv = new IntegerValue(n);
+            return iv;
         } catch (Exception e) {
-           StringValue sv = new StringValue(str);
-           return sv;
+            StringValue sv = new StringValue(str);
+            return sv;
         }
     }
 }

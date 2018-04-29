@@ -1,6 +1,7 @@
 package syntatic;
 
 import interpreter.command.AssignCommand;
+
 import java.io.IOException;
 
 import lexical.Lexeme;
@@ -24,7 +25,6 @@ public class SyntaticAnalysis {
     private Lexeme current;
 
     /**
-     *
      * @param lex
      * @throws IOException
      */
@@ -40,7 +40,7 @@ public class SyntaticAnalysis {
     }
 
     /*
-     * Marca o lexema corrente com o tipo passado por parametro, caso se trate 
+     * Marca o lexema corrente com o tipo passado por parametro, caso se trate
      * do tipo correto
      */
     private void matchToken(TokenType type) throws IOException {
@@ -76,7 +76,7 @@ public class SyntaticAnalysis {
     }
 
     /*
-     * 
+     *
      */
     // <code> ::= { <statement> }
     private CommandsBlock procCode() throws IOException {

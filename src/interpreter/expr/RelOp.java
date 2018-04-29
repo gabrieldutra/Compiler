@@ -6,8 +6,7 @@
 package interpreter.expr;
 
 /**
- *
- * @author gabriel
+ * @author gabrieldutra
  */
 public enum RelOp {
     Equal,

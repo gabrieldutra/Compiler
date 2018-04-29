@@ -39,7 +39,7 @@ public class FunctionCallExpr extends Expr {
         Arguments fArgs = new Arguments();
         for (int i = 0; i < params.size(); i++) {
             Rhs rhs = params.get(i);
-            fArgs.setValue(String.format("arg%d", i+1), rhs.rhs(self, args));
+            fArgs.setValue(String.format("arg%d", i + 1), rhs.rhs(self, args));
         }
 
         Value<?> ret = f.call(fSelf, fArgs);
