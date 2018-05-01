@@ -1,4 +1,6 @@
 system.println("Hello World!");
-if (3 <= 4 | 1 == 1) {
+if (3 >= 4 | 1 == 2) {
     system.println("Topster!");
-} 
+} else {
+    system.println("Else");
+}

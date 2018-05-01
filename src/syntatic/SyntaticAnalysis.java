@@ -97,7 +97,7 @@ public class SyntaticAnalysis {
     private Command procStatement() throws IOException {
         Command cmd = null;
         if (current.type == TokenType.IF) {
-            procIf(); // TODO: verificar isso
+            cmd = procIf(); // TODO: verificar isso
         } else if (current.type == TokenType.WHILE) {
             procWhile();
         } else {
