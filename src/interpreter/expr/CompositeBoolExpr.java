@@ -5,13 +5,13 @@ import interpreter.util.Instance;
 
 /**
  *
- * @author MarceloFCandido
+ * @author MarceloFCandido, gabrieldutra
  */
 public class CompositeBoolExpr extends BoolExpr {
 
-    BoolExpr left;
-    BoolOp op;
-    BoolExpr right;
+    private BoolExpr left;
+    private BoolOp op;
+    private BoolExpr right;
 
     public CompositeBoolExpr(BoolExpr left, BoolOp op, BoolExpr right, int line) {
         super(line);
