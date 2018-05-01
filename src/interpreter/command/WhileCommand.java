@@ -21,8 +21,10 @@ public class WhileCommand extends Command {
     }
 
     @Override
-    public void execute(Instance instance, Arguments args) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void execute(Instance self, Arguments args) {
+        while(expr.expr(self, args)) {
+            cmd.execute(self, args);
+        }
     }
     
 }

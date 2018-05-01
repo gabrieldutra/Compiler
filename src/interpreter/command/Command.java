@@ -15,6 +15,6 @@ public abstract class Command {
         return line;
     }
 
-    public abstract void execute(Instance instance, Arguments args);
+    public abstract void execute(Instance self, Arguments args);
 
 }

@@ -3,6 +3,7 @@ package syntatic;
 import interpreter.command.AssignCommand;
 import interpreter.command.Command;
 import interpreter.command.CommandsBlock;
+import interpreter.command.IfCommand;
 import interpreter.expr.*;
 import interpreter.util.AccessPath;
 import interpreter.value.IntegerValue;
@@ -106,20 +107,25 @@ public class SyntaticAnalysis {
     }
 
     // <if> ::= if '(' <boolexpr> ')' '{' <code> '}' [else '{' <code> '}' ]
-    private void procIf() throws IOException {
+    private IfCommand procIf() throws IOException {
+        int line = lex.getLine();
         matchToken(TokenType.IF);
         matchToken(TokenType.OPEN_PAR);
         BoolExpr be = procBoolExpr();
         matchToken(TokenType.CLOSE_PAR);
         matchToken(TokenType.OPEN_CUR);
-        procCode();
+        CommandsBlock cbThen = procCode();
+        CommandsBlock cbElse = null;
         matchToken(TokenType.CLOSE_CUR);
         if (current.type == TokenType.ELSE) {
             matchToken(TokenType.ELSE);
             matchToken(TokenType.OPEN_CUR);
-            procCode();
+            cbElse = procCode();
             matchToken(TokenType.CLOSE_CUR);
         }
+        
+        IfCommand ic = new IfCommand(line, be, cbThen, cbElse);
+        return ic;
     }
 
     // <while> ::= while '(' <boolexpr> ')' '{' <code> '}'
