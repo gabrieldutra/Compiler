@@ -4,6 +4,7 @@ import interpreter.command.AssignCommand;
 import interpreter.command.Command;
 import interpreter.command.CommandsBlock;
 import interpreter.command.IfCommand;
+import interpreter.command.WhileCommand;
 import interpreter.expr.*;
 import interpreter.util.AccessPath;
 import interpreter.value.IntegerValue;
@@ -99,7 +100,7 @@ public class SyntaticAnalysis {
         if (current.type == TokenType.IF) {
             cmd = procIf(); // TODO: verificar isso
         } else if (current.type == TokenType.WHILE) {
-            procWhile();
+            cmd = procWhile();
         } else {
             cmd = procCmd();
         }
@@ -123,20 +124,23 @@ public class SyntaticAnalysis {
             cbElse = procCode();
             matchToken(TokenType.CLOSE_CUR);
         }
-        
+
         IfCommand ic = new IfCommand(line, be, cbThen, cbElse);
         return ic;
     }
 
     // <while> ::= while '(' <boolexpr> ')' '{' <code> '}'
-    private void procWhile() throws IOException {
+    private WhileCommand procWhile() throws IOException {
+        int line = lex.getLine();
         matchToken(TokenType.WHILE);
         matchToken(TokenType.OPEN_PAR);
-        procBoolExpr();
+        BoolExpr be = procBoolExpr();
         matchToken(TokenType.CLOSE_PAR);
         matchToken(TokenType.OPEN_CUR);
-        procCode();
+        CommandsBlock cb = procCode();
         matchToken(TokenType.CLOSE_CUR);
+        WhileCommand wc = new WhileCommand(line, be, cb);
+        return wc;
     }
 
     // <cmd> ::= <access> ( <assign> | <call> ) ';'
@@ -300,8 +304,20 @@ public class SyntaticAnalysis {
     private Expr procExpr() throws IOException {
         Expr e = procTerm();
         while (current.type == TokenType.PLUS || current.type == TokenType.MINUS) {
-            matchToken(current.type);
-            procTerm();
+            int line = lex.getLine();
+            if (current.type == TokenType.PLUS) {
+                matchToken(TokenType.PLUS);
+                Expr rightTerm = procTerm();
+                CompositeExpr ce = new CompositeExpr(e, CompOp.Add, rightTerm, line);
+                e = ce;
+            }
+            
+            if (current.type == TokenType.MINUS) {
+                matchToken(TokenType.MINUS);
+                Expr rightTerm = procTerm();
+                CompositeExpr ce = new CompositeExpr(e, CompOp.Sub, rightTerm, line);
+                e = ce;
+            }
         }
         return e;
     }
@@ -311,8 +327,27 @@ public class SyntaticAnalysis {
         Expr e = procFactor();
         while (current.type == TokenType.MULT || current.type == TokenType.DIV
                 || current.type == TokenType.MOD) {
-            matchToken(current.type);
-            procFactor();
+            int line = lex.getLine();
+            if (current.type == TokenType.MULT) {
+                matchToken(TokenType.MULT);
+                Expr rightFactor = procFactor();
+                CompositeExpr ce = new CompositeExpr(e, CompOp.Mul, rightFactor, line);
+                e = ce;
+            }
+            
+            if(current.type == TokenType.DIV) {
+                matchToken(TokenType.DIV);
+                Expr rightFactor = procFactor();
+                CompositeExpr ce = new CompositeExpr(e, CompOp.Div, rightFactor, line);
+                e = ce;
+            }
+            
+            if (current.type == TokenType.MOD) {
+                matchToken(TokenType.MOD);
+                Expr rightFactor = procFactor();
+                CompositeExpr ce = new CompositeExpr(e, CompOp.Mod, rightFactor, line);
+                e = ce;
+            }
         }
         return e;
     }
@@ -326,7 +361,7 @@ public class SyntaticAnalysis {
             e = procString();
         } else if (current.type == TokenType.OPEN_PAR) {
             matchToken(TokenType.OPEN_PAR);
-            procExpr();
+            e = procExpr();
             matchToken(TokenType.CLOSE_PAR);
         } else {
             int line = lex.getLine();
