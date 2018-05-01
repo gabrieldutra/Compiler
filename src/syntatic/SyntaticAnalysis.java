@@ -109,7 +109,7 @@ public class SyntaticAnalysis {
     private void procIf() throws IOException {
         matchToken(TokenType.IF);
         matchToken(TokenType.OPEN_PAR);
-        procBoolExpr();
+        BoolExpr be = procBoolExpr();
         matchToken(TokenType.CLOSE_PAR);
         matchToken(TokenType.OPEN_CUR);
         procCode();
@@ -197,34 +197,74 @@ public class SyntaticAnalysis {
     }
 
     // <boolexpr> ::= [ '!' ] <cmpexpr> [ ('&' | '|') <boolexpr> ]
-    private void procBoolExpr() throws IOException {
+    private BoolExpr procBoolExpr() throws IOException {
+        BoolExpr be;
         if (current.type == TokenType.NOT) {
+            int line = lex.getLine();
             matchToken(TokenType.NOT);
+            be = new NotBoolExpr(procCmpExpr(), lex.getLine());
+        } else {
+            be = procCmpExpr();
         }
-        procCmpExpr();
 
-        if (current.type == TokenType.AND || current.type == TokenType.OR) {
-            matchToken(current.type);
-            procBoolExpr();
+        if (current.type == TokenType.AND) {
+            int line = lex.getLine();
+            matchToken(TokenType.AND);
+            BoolExpr rbe = procBoolExpr();
+            be = new CompositeBoolExpr(be, BoolOp.And, rbe, line);
         }
+
+        if (current.type == TokenType.OR) {
+            int line = lex.getLine();
+            matchToken(TokenType.OR);
+            BoolExpr rbe = procBoolExpr();
+            return new CompositeBoolExpr(be, BoolOp.Or, rbe, line);
+        }
+        return be;
     }
 
     // <cmpexpr> ::= <expr> <relop> <expr>
-    private void procCmpExpr() throws IOException {
-        procExpr();
-        procRelop();
-        procExpr();
+    private SingleBoolExpr procCmpExpr() throws IOException {
+        Expr left = procExpr();
+        int line = lex.getLine();
+        RelOp rop = procRelop();
+        Expr right = procExpr();
+        SingleBoolExpr sbe = new SingleBoolExpr(line, left, rop, right);
+        return sbe;
     }
 
     // <relop> ::= '==' | '!=' | '<' | '>' | '<=' | '>='
-    private void procRelop() throws IOException {
-        if (current.type == TokenType.EQUAL || current.type == TokenType.NOT_EQ
-                || current.type == TokenType.LESS
-                || current.type == TokenType.GREATER
-                || current.type == TokenType.LESS_EQ
-                || current.type == TokenType.GREATER_EQ) {
+    private RelOp procRelop() throws IOException {
+        if (current.type == TokenType.EQUAL) {
             matchToken(current.type);
+            return RelOp.Equal;
         }
+
+        if (current.type == TokenType.NOT_EQ) {
+            matchToken(current.type);
+            return RelOp.NotEqual;
+        }
+
+        if (current.type == TokenType.LESS) {
+            matchToken(current.type);
+            return RelOp.LowerThan;
+        }
+
+        if (current.type == TokenType.GREATER) {
+            matchToken(current.type);
+            return RelOp.GreaterThan;
+        }
+
+        if (current.type == TokenType.LESS_EQ) {
+            matchToken(current.type);
+            return RelOp.LowerEqual;
+        }
+
+        if (current.type == TokenType.GREATER_EQ) {
+            matchToken(current.type);
+            return RelOp.GreaterEqual;
+        }
+        return null;
     }
 
     // <rhs> ::= <function> | <expr>

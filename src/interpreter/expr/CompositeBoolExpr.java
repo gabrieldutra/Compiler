@@ -1,4 +1,3 @@
-
 package interpreter.expr;
 
 import interpreter.util.Arguments;
@@ -9,11 +8,11 @@ import interpreter.util.Instance;
  * @author MarceloFCandido
  */
 public class CompositeBoolExpr extends BoolExpr {
-    
+
     BoolExpr left;
     BoolOp op;
     BoolExpr right;
-    
+
     public CompositeBoolExpr(BoolExpr left, BoolOp op, BoolExpr right, int line) {
         super(line);
         this.left = left;
@@ -23,10 +22,12 @@ public class CompositeBoolExpr extends BoolExpr {
 
     @Override
     public boolean expr(Instance self, Arguments args) {
-        throw new UnsupportedOperationException("Not supported yet."); 
-        //To change body of generated methods, choose Tools | Templates.
+        boolean leftResult = left.expr(self, args);
+        boolean rightResult = right.expr(self, args);
+        if (this.op == BoolOp.And) {
+            return leftResult && rightResult;
+        }
+        return leftResult || rightResult;
     }
-    
-    
-    
+
 }
