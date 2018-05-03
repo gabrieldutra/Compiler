@@ -1,0 +1,16 @@
+system.println("Hello World!");
+a = 4;
+if (3 >= 4 | 1 == 2) {
+    system.println("Topster!");
+} else {
+    system.println("Else");
+    a = 1 + 2 * 2;
+    system.println(a);
+    b = "oi" + 2;
+    system.println(b);
+}
+b = 15;
+while (b > 0) {
+    system.println("O numero atual e: "+b);
+    b = b - 1;
+}

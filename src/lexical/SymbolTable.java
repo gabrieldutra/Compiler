@@ -1,7 +1,7 @@
 package lexical;
 
-import java.util.Map;
 import java.util.HashMap;
+import java.util.Map;
 
 class SymbolTable {
 
@@ -9,7 +9,7 @@ class SymbolTable {
 
     public SymbolTable() {
         st = new HashMap<String, TokenType>();
-        
+
         // symbols
         st.put(";", TokenType.DOT_COMMA);
         st.put(",", TokenType.COMMA);
@@ -27,7 +27,7 @@ class SymbolTable {
         st.put("system", TokenType.SYSTEM);
         st.put("self", TokenType.SELF);
         st.put("args", TokenType.ARGS);
-    
+
         // operators
         st.put(".", TokenType.DOT);
         st.put("=", TokenType.ATTRIB);
@@ -53,6 +53,6 @@ class SymbolTable {
 
     public TokenType find(String token) {
         return this.contains(token) ?
-            st.get(token) : TokenType.INVALID_TOKEN;
+                st.get(token) : TokenType.INVALID_TOKEN;
     }
 }

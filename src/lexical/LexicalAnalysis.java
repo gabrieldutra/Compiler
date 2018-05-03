@@ -1,10 +1,8 @@
 package lexical;
 
-import java.io.IOException;
 import java.io.FileInputStream;
+import java.io.IOException;
 import java.io.PushbackInputStream;
-
-import java.util.*;
 
 public class LexicalAnalysis implements AutoCloseable {
 
@@ -23,6 +21,7 @@ public class LexicalAnalysis implements AutoCloseable {
         line = 1;
     }
 
+    @Override
     public void close() throws IOException {
         input.close();
     }
@@ -139,7 +138,7 @@ public class LexicalAnalysis implements AutoCloseable {
 
                     lex.token += (char) c;
                     estado = 7;
-                    break;                
+                    break;
                 case 8:
                     if (c != '\"') {
                         lex.token += (char) c;
