@@ -7,6 +7,9 @@ import interpreter.command.IfCommand;
 import interpreter.command.WhileCommand;
 import interpreter.expr.*;
 import interpreter.util.AccessPath;
+import interpreter.util.Function;
+import interpreter.util.StandardFunction;
+import interpreter.value.FunctionValue;
 import interpreter.value.IntegerValue;
 import interpreter.value.StringValue;
 import lexical.Lexeme;
@@ -281,7 +284,7 @@ public class SyntaticAnalysis {
     private Rhs procRhs() throws IOException {
         Rhs rhs = null;
         if (current.type == TokenType.FUNCTION) {
-            procFunction();
+            rhs = procFunction();
         } else {
             rhs = procExpr();
         }
@@ -289,15 +292,26 @@ public class SyntaticAnalysis {
     }
 
     // <function>  ::= function '{' <code> [ return <rhs> ; ] '}'
-    private void procFunction() throws IOException {
+    private FunctionRhs procFunction() throws IOException {
+        int line = lex.getLine();
         matchToken(TokenType.FUNCTION);
         matchToken(TokenType.OPEN_CUR);
-        procCode();
+        CommandsBlock cmds = procCode();
+        Rhs ret = null;
         if (current.type == TokenType.RETURN) {
             matchToken(TokenType.RETURN);
-            procRhs();
+            ret = procRhs();
+            matchToken(TokenType.DOT_COMMA);
+        }
+        StandardFunction sf;
+        if(ret == null) {
+            sf = new StandardFunction(cmds);
+        } else {
+            sf = new StandardFunction(cmds, ret);
         }
         matchToken(TokenType.CLOSE_CUR);
+        FunctionValue fv = new FunctionValue(sf);
+        return new FunctionRhs(fv, line);
     }
 
     // <expr>      ::= <term> { ('+' | '-') <term> }

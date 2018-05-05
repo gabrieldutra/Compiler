@@ -40,6 +40,7 @@ public class sooi {
 //                    break;
 //            }
         } catch (Exception e) {
+            e.printStackTrace();
             System.err.println("Internal error: " + e.getMessage());
         }
     }
