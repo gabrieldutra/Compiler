@@ -40,7 +40,14 @@ public class FunctionCallExpr extends Expr {
             fArgs.setValue(String.format("arg%d", i + 1), rhs.rhs(self, args));
         }
 
-        Value<?> ret = f.call(fSelf, fArgs);
+        // Trata exceçoes vindas da chamada de funçao 
+        Value<?> ret = null;
+        try {
+            ret = f.call(fSelf, fArgs);
+        } catch (InvalidOperationException e) {
+            InterpreterError.abort(this.getLine());
+        }
+
         return ret;
     }
 

@@ -5,7 +5,7 @@ public enum FunctionType {
     Print,
     Println,
     Read,
-    RandomV,
+    Random,
     Get,
     Set,
     Abort,
