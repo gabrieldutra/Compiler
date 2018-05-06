@@ -15,4 +15,7 @@ public class IntegerValue extends Value<Integer> {
         return value;
     }
 
+    public int valueAsInt() {
+        return value.intValue();
+    }
 }
