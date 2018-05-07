@@ -2,31 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="82da4538-37b1-4b36-bffd-4957c15e8870" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/saveactions_settings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/interpreter/command/AssignCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/interpreter/command/AssignCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/interpreter/command/Command.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/interpreter/command/Command.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/interpreter/command/CommandsBlock.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/interpreter/command/CommandsBlock.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/interpreter/expr/AccessExpr.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/interpreter/expr/AccessExpr.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/interpreter/expr/BoolOp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/interpreter/expr/BoolOp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/interpreter/expr/ConstExpr.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/interpreter/expr/ConstExpr.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/interpreter/expr/Expr.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/interpreter/expr/Expr.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/interpreter/expr/FunctionCallExpr.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/interpreter/expr/FunctionCallExpr.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/interpreter/expr/RelOp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/interpreter/expr/RelOp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/interpreter/expr/Rhs.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/interpreter/expr/Rhs.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/interpreter/util/AccessPath.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/interpreter/util/AccessPath.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/interpreter/util/Function.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/interpreter/util/Function.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/interpreter/util/Global.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/interpreter/util/Global.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/interpreter/util/Memory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/interpreter/util/Memory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/interpreter/util/SpecialFunction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/interpreter/util/SpecialFunction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/interpreter/value/FunctionValue.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/interpreter/value/FunctionValue.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/interpreter/value/InstanceValue.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/interpreter/value/InstanceValue.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/interpreter/value/IntegerValue.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/interpreter/value/IntegerValue.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/interpreter/value/StringValue.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/interpreter/value/StringValue.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/lexical/LexicalAnalysis.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lexical/LexicalAnalysis.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/lexical/SymbolTable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lexical/SymbolTable.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sooi.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sooi.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/syntatic/SyntaticAnalysis.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/syntatic/SyntaticAnalysis.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -38,11 +15,65 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="Lexeme.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/lexical/Lexeme.java">
+      <file leaf-file-name="example.soo" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/example.soo">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="15">
+              <caret line="1" column="18" selection-start-line="1" selection-start-column="18" selection-end-line="1" selection-end-column="18" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="boxes.soo" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/examples/boxes.soo">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="45">
+              <caret line="3" column="12" selection-start-line="3" selection-start-column="12" selection-end-line="3" selection-end-column="12" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="cond.soo" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/examples/cond.soo">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="30">
+              <caret line="2" lean-forward="true" selection-start-line="2" selection-end-line="2" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="passby.soo" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/examples/passby.soo">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="120">
-              <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
+              <caret line="8" column="20" selection-start-line="8" selection-start-column="20" selection-end-line="8" selection-end-column="20" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SpecialFunction.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/interpreter/util/SpecialFunction.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1171">
+              <caret line="166" column="33" selection-start-line="166" selection-start-column="33" selection-end-line="166" selection-end-column="33" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AccessExpr.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/interpreter/expr/AccessExpr.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="210">
+              <caret line="23" column="9" selection-start-line="23" selection-start-column="9" selection-end-line="23" selection-end-column="9" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AssignCommand.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/interpreter/command/AssignCommand.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="135">
+              <caret line="22" column="27" selection-start-line="22" selection-start-column="27" selection-end-line="22" selection-end-column="27" />
             </state>
           </provider>
         </entry>
@@ -50,23 +81,17 @@
       <file leaf-file-name="Memory.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/interpreter/util/Memory.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="90">
-              <caret line="6" column="21" selection-start-line="6" selection-start-column="21" selection-end-line="6" selection-end-column="21" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state relative-caret-position="271">
+              <caret line="32" selection-start-line="32" selection-end-line="32" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SymbolTable.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/lexical/SymbolTable.java">
+      <file leaf-file-name="AccessPath.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/interpreter/util/AccessPath.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="45">
-              <caret line="3" column="21" selection-start-line="3" selection-start-column="21" selection-end-line="3" selection-end-column="21" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state relative-caret-position="121">
+              <caret line="52" column="23" selection-start-line="52" selection-start-column="23" selection-end-line="52" selection-end-column="23" />
             </state>
           </provider>
         </entry>
@@ -92,7 +117,6 @@
         <option value="$PROJECT_DIR$/src/interpreter/expr/Expr.java" />
         <option value="$PROJECT_DIR$/src/interpreter/expr/ConstExpr.java" />
         <option value="$PROJECT_DIR$/src/interpreter/expr/BoolOp.java" />
-        <option value="$PROJECT_DIR$/src/interpreter/expr/AccessExpr.java" />
         <option value="$PROJECT_DIR$/src/interpreter/expr/BoolExpr.java" />
         <option value="$PROJECT_DIR$/src/interpreter/util/SpecialFunction.java" />
         <option value="$PROJECT_DIR$/src/interpreter/util/InterpreterError.java" />
@@ -114,6 +138,7 @@
         <option value="$PROJECT_DIR$/src/sooi.java" />
         <option value="$PROJECT_DIR$/src/interpreter/util/Memory.java" />
         <option value="$PROJECT_DIR$/src/lexical/SymbolTable.java" />
+        <option value="$PROJECT_DIR$/src/interpreter/expr/AccessExpr.java" />
       </list>
     </option>
   </component>
@@ -128,15 +153,17 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
-      <pane id="AndroidView" />
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
             <path>
               <item name="SmallOO" type="b2602c69:ProjectViewProjectNode" />
               <item name="SmallOO" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="SmallOO" type="b2602c69:ProjectViewProjectNode" />
+              <item name="SmallOO" type="462c0819:PsiDirectoryNode" />
+              <item name="examples" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="SmallOO" type="b2602c69:ProjectViewProjectNode" />
@@ -163,36 +190,13 @@
               <item name="interpreter" type="462c0819:PsiDirectoryNode" />
               <item name="expr" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="SmallOO" type="b2602c69:ProjectViewProjectNode" />
-              <item name="SmallOO" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="interpreter" type="462c0819:PsiDirectoryNode" />
-              <item name="util" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="SmallOO" type="b2602c69:ProjectViewProjectNode" />
-              <item name="SmallOO" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="interpreter" type="462c0819:PsiDirectoryNode" />
-              <item name="value" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="SmallOO" type="b2602c69:ProjectViewProjectNode" />
-              <item name="SmallOO" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="lexical" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="SmallOO" type="b2602c69:ProjectViewProjectNode" />
-              <item name="SmallOO" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="syntatic" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="AndroidView" />
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -214,7 +218,7 @@
     <configuration name="SmallOO" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="sooi" />
       <module name="SmallOO" />
-      <option name="PROGRAM_PARAMETERS" value="example.soo" />
+      <option name="PROGRAM_PARAMETERS" value="examples/boxes.soo" />
       <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
     </configuration>
     <configuration default="true" type="Application" factoryName="Application">
@@ -278,30 +282,50 @@
     <layout>
       <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info active="true" anchor="bottom" id="Messages" order="7" visible="true" weight="0.3288719" />
+      <window_info anchor="bottom" id="Messages" order="7" weight="0.3288719" />
       <window_info anchor="right" id="Palette&#9;" order="3" />
       <window_info id="Image Layers" order="2" />
       <window_info anchor="right" id="Capture Analysis" order="3" />
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
       <window_info anchor="right" id="Maven Projects" order="3" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.3288719" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.3288719" />
       <window_info anchor="bottom" id="Version Control" order="7" />
       <window_info anchor="bottom" id="Terminal" order="7" />
       <window_info id="Capture Tool" order="2" />
       <window_info id="Designer" order="2" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24959083" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24959083" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info id="UI Designer" order="2" />
       <window_info anchor="right" id="Theme Preview" order="3" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="right" id="Palette" order="3" />
+      <window_info id="Designer" order="2" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Capture Analysis" order="3" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="bottom" id="Terminal" order="7" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Version Control" order="7" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.3288719" />
+      <window_info id="Image Layers" order="2" />
+      <window_info id="Capture Tool" order="2" />
+      <window_info id="UI Designer" order="2" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="right" id="Theme Preview" order="3" />
+      <window_info anchor="right" id="Palette&#9;" order="3" />
       <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Find" order="1" />
+      <window_info active="true" anchor="bottom" id="Messages" order="7" visible="true" weight="0.3288719" />
+      <window_info anchor="right" id="Maven Projects" order="3" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24959083" />
     </layout>
   </component>
   <component name="VcsContentAnnotationSettings">
@@ -324,6 +348,79 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/src/lexical/SymbolTable.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="10" column="44" selection-start-line="10" selection-start-column="44" selection-end-line="10" selection-end-column="44" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/interpreter/util/Global.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="7" column="27" selection-start-line="7" selection-start-column="27" selection-end-line="7" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/interpreter/util/FunctionType.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="2" column="26" selection-start-line="2" selection-start-column="26" selection-end-line="2" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/interpreter/util/StandardFunction.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="435">
+          <caret line="29" column="54" lean-forward="true" selection-start-line="29" selection-start-column="54" selection-end-line="29" selection-end-column="54" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/interpreter/util/AccessPath.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="121">
+          <caret line="52" column="23" lean-forward="true" selection-start-line="52" selection-start-column="23" selection-end-line="52" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/interpreter/util/Memory.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="271">
+          <caret line="32" lean-forward="true" selection-start-line="32" selection-end-line="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/interpreter/command/AssignCommand.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="22" column="27" selection-start-line="22" selection-start-column="27" selection-end-line="22" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/interpreter/util/SpecialFunction.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1171">
+          <caret line="166" column="33" selection-start-line="166" selection-start-column="33" selection-end-line="166" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/interpreter/expr/AccessExpr.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="18" column="13" lean-forward="true" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/example.soo">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="5" column="18" selection-start-line="5" selection-start-column="18" selection-end-line="5" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/example.soo">
       <provider selected="true" editor-type-id="text-editor">
         <state>
@@ -338,13 +435,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/example.soo">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="29" selection-start-column="29" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="392">
@@ -354,8 +444,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/interpreter/command/AssignCommand.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="10" column="23" selection-start-line="10" selection-start-column="23" selection-end-line="10" selection-end-column="23" />
+        <state relative-caret-position="135">
+          <caret line="22" column="27" selection-start-line="22" selection-start-column="27" selection-end-line="22" selection-end-column="27" />
         </state>
       </provider>
     </entry>
@@ -370,9 +460,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="120">
           <caret line="8" column="42" selection-start-line="8" selection-start-column="35" selection-end-line="8" selection-end-column="42" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -397,9 +484,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="150">
           <caret line="10" column="28" selection-start-line="10" selection-start-column="28" selection-end-line="10" selection-end-column="28" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -431,13 +515,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/interpreter/expr/AccessExpr.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="12" column="18" selection-start-line="12" selection-start-column="18" selection-end-line="12" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/interpreter/expr/BoolExpr.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="150">
@@ -447,8 +524,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/interpreter/util/SpecialFunction.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="13" column="44" selection-start-line="13" selection-start-column="44" selection-end-line="13" selection-end-column="44" />
+        <state relative-caret-position="1171">
+          <caret line="166" column="33" selection-start-line="166" selection-start-column="33" selection-end-line="166" selection-end-column="33" />
         </state>
       </provider>
     </entry>
@@ -496,8 +573,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/interpreter/util/AccessPath.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="14" column="12" selection-start-line="14" selection-start-column="12" selection-end-line="14" selection-end-column="12" />
+        <state relative-caret-position="121">
+          <caret line="52" column="23" selection-start-line="52" selection-start-column="23" selection-end-line="52" selection-end-column="23" />
         </state>
       </provider>
     </entry>
@@ -547,10 +624,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="120">
           <caret line="8" column="1" selection-start-line="8" selection-start-column="1" selection-end-line="8" selection-end-column="1" />
-          <folding>
-            <element signature="e#109#110#0" expanded="true" />
-            <element signature="e#135#136#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -584,11 +657,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/interpreter/util/Memory.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="6" column="21" selection-start-line="6" selection-start-column="21" selection-end-line="6" selection-end-column="21" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="271">
+          <caret line="32" selection-start-line="32" selection-end-line="32" />
         </state>
       </provider>
     </entry>
@@ -596,9 +666,44 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="45">
           <caret line="3" column="21" selection-start-line="3" selection-start-column="21" selection-end-line="3" selection-end-column="21" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/examples/array.soo">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/example.soo">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="1" column="18" selection-start-line="1" selection-start-column="18" selection-end-line="1" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/examples/boxes.soo">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="45">
+          <caret line="3" column="12" selection-start-line="3" selection-start-column="12" selection-end-line="3" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/examples/cond.soo">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="2" lean-forward="true" selection-start-line="2" selection-end-line="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/examples/passby.soo">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="8" column="20" selection-start-line="8" selection-start-column="20" selection-end-line="8" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/interpreter/expr/AccessExpr.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="23" column="9" selection-start-line="23" selection-start-column="9" selection-end-line="23" selection-end-column="9" />
         </state>
       </provider>
     </entry>
