@@ -130,15 +130,56 @@ public class SpecialFunction extends Function {
     }
 
     private Value<?> get(Instance self, Arguments args) {
-        if (!args.contains("arg1")) {
+        if (!args.contains("arg1") || !args.contains("arg2")) {
             throw new InvalidOperationException();
         }
         
-        return new IntegerValue(0);
+        Value<?> objInstance = args.getValue("arg1");
+        Value<?> attrString = args.getValue("arg2");
+        
+        if (!(objInstance instanceof InstanceValue)) {
+            throw new InvalidOperationException();
+        }
+        
+        if (!(attrString instanceof StringValue)) {
+            throw new InvalidOperationException();
+        }
+        
+        String attr = (String) attrString.value();
+
+        Instance pureInstance = ((InstanceValue) objInstance).value();
+        Value<?> attrValue = pureInstance.getValue(attr);
+
+        return attrValue;
     }
 
     private Value<?> set(Instance self, Arguments args) {
+        if (!args.contains("arg1")) {
+            System.out.println("Caso 1");
+            throw new InvalidOperationException();
+        }
+        
+        Value<?> objInstance = args.getValue("arg1");
+        Value<?> attrString = args.getValue("arg2");
+        Value<?> value = args.getValue("arg3");
+        
+        if (!(objInstance instanceof InstanceValue)) {
+            System.out.println("Caso 2");
+            throw new InvalidOperationException();
+        }
+        
+        if (!(attrString instanceof StringValue)) {
+            System.out.println("Caso 3");
+            throw new InvalidOperationException();
+        }
+        
+        String attr = (String) attrString.value();
+
+        Instance pureInstance = ((InstanceValue) objInstance).value();
+        pureInstance.setValue(attr, value);
+        
         return new IntegerValue(0);
+        
     }
 
     private Value<?> abort(Arguments args) {
