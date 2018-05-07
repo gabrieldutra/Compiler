@@ -13,7 +13,13 @@ public class Global extends Memory {
         system.setValue("println", new FunctionValue(new SpecialFunction(FunctionType.Println)));
         system.setValue("read", new FunctionValue(new SpecialFunction(FunctionType.Read)));
         system.setValue("random", new FunctionValue(new SpecialFunction(FunctionType.Random)));
-        // Add the others.
+        system.setValue("get", new FunctionValue(new SpecialFunction(FunctionType.Get)));
+        system.setValue("set", new FunctionValue(new SpecialFunction(FunctionType.Set)));
+        system.setValue("abort", new FunctionValue(new SpecialFunction(FunctionType.Abort)));
+        system.setValue("type", new FunctionValue(new SpecialFunction(FunctionType.Type)));
+        system.setValue("length", new FunctionValue(new SpecialFunction(FunctionType.Length)));
+        system.setValue("substring", new FunctionValue(new SpecialFunction(FunctionType.Substring)));
+        system.setValue("clone", new FunctionValue(new SpecialFunction(FunctionType.Clone)));
 
         this.setValue("system", new InstanceValue(system));
     }

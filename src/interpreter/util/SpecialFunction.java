@@ -38,10 +38,10 @@ public class SpecialFunction extends Function {
                 v = this.random(args);
                 break;
             case Get:
-                v = this.get(args);
+                v = this.get(self, args);
                 break;
             case Set:
-                v = this.set(args);
+                v = this.set(self, args);
                 break;
             case Abort:
                 v = this.abort(args);
@@ -129,29 +129,29 @@ public class SpecialFunction extends Function {
         return new IntegerValue(randomNumber);
     }
 
-    private Value<?> get(Arguments args) {
+    private Value<?> get(Instance self, Arguments args) {
+        if (!args.contains("arg1")) {
+            throw new InvalidOperationException();
+        }
+        System.out.println(args.getValue("arg1").getClass());
         return new IntegerValue(0);
     }
 
-    private Value<?> set(Arguments args) {
+    private Value<?> set(Instance self, Arguments args) {
         return new IntegerValue(0);
     }
 
     private Value<?> abort(Arguments args) {
-        Value<?> argumentOne = null;
-        boolean thereIsArg = false;
+        Value<?> argumentOne;
+        
         if (args.contains("arg1")) {
             argumentOne = args.getValue("arg1");
-            thereIsArg = true;
-        }
-        
-        if (thereIsArg) {   // Argumento nao e uma string
+            
+            // Argumento nao e uma string
             if (!(argumentOne instanceof StringValue)) {
                 throw new InvalidOperationException();
             }
-        }
-        
-        if (thereIsArg) {
+            
             this.println(args);   
         }
         
@@ -219,8 +219,8 @@ public class SpecialFunction extends Function {
         }
         
         String value = (String) argumentOne.value();
-        int indexI = (int) ((IntegerValue) argumentTwo).valueAsInt();
-        int indexF = (int) ((IntegerValue) argumentThree).valueAsInt();
+        int indexI = ((IntegerValue) argumentTwo).value();
+        int indexF = ((IntegerValue) argumentThree).value();
         
         
         String strRet = value.substring(indexI, indexF);
@@ -230,7 +230,22 @@ public class SpecialFunction extends Function {
     }
 
     private Value<?> clone(Arguments args) {
-        return new IntegerValue(0);
+        if (!(args.contains("arg1"))) {
+            throw new InvalidOperationException();
+        }
+        
+        Value<?> argumentOne = args.getValue("arg1");
+        Value<?> clonedValue;
+        
+        if (argumentOne instanceof IntegerValue) {
+            clonedValue = new IntegerValue(((IntegerValue) argumentOne).value());
+        } else if (argumentOne instanceof StringValue) {
+            clonedValue = new StringValue(((StringValue) argumentOne).value());
+        } else if (argumentOne instanceof FunctionValue) {
+            clonedValue = new FunctionValue(((FunctionValue) argumentOne).value());
+        } else throw new InvalidOperationException();
+        
+        return clonedValue;
     }
 
 }
