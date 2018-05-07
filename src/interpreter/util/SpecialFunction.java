@@ -1,5 +1,7 @@
 package interpreter.util;
 
+import interpreter.value.FunctionValue;
+import interpreter.value.InstanceValue;
 import interpreter.value.IntegerValue;
 import interpreter.value.StringValue;
 import interpreter.value.Value;
@@ -136,19 +138,95 @@ public class SpecialFunction extends Function {
     }
 
     private Value<?> abort(Arguments args) {
+        Value<?> argumentOne = null;
+        boolean thereIsArg = false;
+        if (args.contains("arg1")) {
+            argumentOne = args.getValue("arg1");
+            thereIsArg = true;
+        }
+        
+        if (thereIsArg) {   // Argumento nao e uma string
+            if (!(argumentOne instanceof StringValue)) {
+                throw new InvalidOperationException();
+            }
+        }
+        
+        if (thereIsArg) {
+            this.println(args);   
+        }
+        
+        System.exit(0);
+        
         return new IntegerValue(0);
     }
 
     private Value<?> type(Arguments args) {
-        return new IntegerValue(0);
+        if (!(args.contains("arg1"))) {
+            throw new InvalidOperationException();
+        }
+        
+        Value<?> argumentOne = args.getValue("arg1");
+        StringValue ret = null;
+        
+        if (argumentOne instanceof IntegerValue) {
+            ret = new StringValue("integer");
+        } else if (argumentOne instanceof StringValue) {
+            ret = new StringValue("string");
+        } else if (argumentOne instanceof FunctionValue) {
+            ret = new StringValue("function");
+        } else if (argumentOne instanceof InstanceValue) {
+            ret = new StringValue("instance");
+        }
+        
+        return ret;
     }
 
     private Value<?> length(Arguments args) {
-        return new IntegerValue(0);
+        Value<?> argumentOne = null;
+        
+        if (!(args.contains("arg1"))) {
+            throw new InvalidOperationException();
+        }
+        
+        argumentOne = args.getValue("arg1");
+        
+        if (!(argumentOne instanceof StringValue)) {
+            throw new InvalidOperationException();
+        } 
+        
+        String value = (String) argumentOne.value();
+        int len = value.length();
+        IntegerValue strLen = new IntegerValue(len);
+        
+        return strLen;
     }
 
     private Value<?> subString(Arguments args) {
-        return new IntegerValue(0);
+        if (!(args.contains("arg1")) 
+                || !(args.contains("arg2")) 
+                || !(args.contains("arg3"))) {
+            throw new InvalidOperationException();
+        }
+        
+        Value<?> argumentOne = args.getValue("arg1");
+        Value<?> argumentTwo = args.getValue("arg2");
+        Value<?> argumentThree = args.getValue("arg3");
+        
+        if (!(argumentOne instanceof StringValue) 
+                || !(argumentTwo instanceof IntegerValue)
+                || !(argumentThree instanceof IntegerValue)) {
+            throw new InvalidOperationException();
+        }
+        
+        String value = (String) argumentOne.value();
+        int indexI = (int) ((IntegerValue) argumentTwo).valueAsInt();
+        int indexF = (int) ((IntegerValue) argumentThree).valueAsInt();
+        
+        
+        String strRet = value.substring(indexI, indexF);
+        StringValue subStr = new StringValue(strRet);
+        
+        return subStr;
     }
 
     private Value<?> clone(Arguments args) {
