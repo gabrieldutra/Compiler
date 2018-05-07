@@ -1,0 +1,7 @@
+array.soo  [x]
+boxes.soo  [x]
+cond.soo   [v]
+passby.soo [x]
+random.soo [v]
+simple.soo [v]
+
