@@ -133,7 +133,7 @@ public class SpecialFunction extends Function {
         if (!args.contains("arg1")) {
             throw new InvalidOperationException();
         }
-        System.out.println(args.getValue("arg1").getClass());
+        
         return new IntegerValue(0);
     }
 
@@ -235,15 +235,12 @@ public class SpecialFunction extends Function {
         }
         
         Value<?> argumentOne = args.getValue("arg1");
-        Value<?> clonedValue;
         
-        if (argumentOne instanceof IntegerValue) {
-            clonedValue = new IntegerValue(((IntegerValue) argumentOne).value());
-        } else if (argumentOne instanceof StringValue) {
-            clonedValue = new StringValue(((StringValue) argumentOne).value());
-        } else if (argumentOne instanceof FunctionValue) {
-            clonedValue = new FunctionValue(((FunctionValue) argumentOne).value());
-        } else throw new InvalidOperationException();
+        if (!(argumentOne instanceof InstanceValue)) {
+            throw new InvalidOperationException();
+        }
+        
+        Value<?> clonedValue = new InstanceValue(((InstanceValue) argumentOne).value().dup());
         
         return clonedValue;
     }
