@@ -75,7 +75,7 @@ public class SpecialFunction extends Function {
                 StringValue sv = (StringValue) v;
                 System.out.print(sv.value());
             } else {
-                throw new RuntimeException("FIXME: Implement me!");
+                System.out.print("Objeto: "+((InstanceValue) v).value());
             }
         }
 

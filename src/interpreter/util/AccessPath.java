@@ -1,11 +1,13 @@
 package interpreter.util;
 
-import interpreter.value.InstanceValue;
-import interpreter.value.IntegerValue;
-import interpreter.value.Value;
-
-import java.util.ArrayList;
 import java.util.List;
+import java.util.ArrayList;
+
+import interpreter.util.InterpreterError;
+
+import interpreter.value.Value;
+import interpreter.value.IntegerValue;
+import interpreter.value.InstanceValue;
 
 public class AccessPath {
 
@@ -28,70 +30,109 @@ public class AccessPath {
     }
 
     public Value<?> getValue(Instance self, Arguments args) {
-        String name = this.getLastName();
-        if (name.equals("self")) {
-            return new InstanceValue(self);
-        }
-        Memory ref = this.getReference(self, args);
-        if (!ref.contains(name)) {
-            ref.setValue(name, IntegerValue.Zero);
-            return IntegerValue.Zero;
+        Memory ref;
+
+        Value<?> ret;
+        if (this.isSingleName()) {
+            if (this.isSelf()) {
+                return new InstanceValue(self);
+            } else if (this.isArgs()) {
+                throw new InvalidOperationException(); // args nao pode ser convertido em Instance
+            }
+            ref = Global.getGlobalTable();
         } else {
-            return ref.getValue(name);
+            ref = this.getReference(self, args);
         }
+
+        String name = this.getLastName();
+        if (ref.contains(name)) {
+            ret = ref.getValue(name);
+        } else {
+            ret = IntegerValue.Zero;
+            ref.setValue(name, ret);
+        }
+
+        return ret;
     }
 
     public void setValue(Instance self, Arguments args, Value<?> value) {
+        Memory ref;
+        if (this.isSingleName()) {
+            if (this.isSelf() || this.isArgs()) {
+                InterpreterError.abort(line);
+            }
+
+            ref = Global.getGlobalTable();
+        } else {
+            ref = this.getReference(self, args);
+        }
+
         String name = this.getLastName();
-        Memory ref = this.getReference(self, args);
         ref.setValue(name, value);
     }
 
     public Memory getReference(Instance self, Arguments args) {
-        int i;
-        String name;
-        Memory ref;
+        Memory ref = null;
+        if (!this.isSingleName()) {
+            int i;
+            String name;
 
-        name = names.get(0);
-        if (name.equals("self")) {
-            if (self == null) {
-                InterpreterError.abort(line);
-            }
+            name = names.get(0);
+            if (name.equals("self")) {
+                if (self == null) {
+                    InterpreterError.abort(line);
+                }
 
-            ref = self;
-            i = 1;
-        } else if (name.equals("args")) {
-            ref = args;
-            if (self == null) {
-                InterpreterError.abort(line);
-            }
+                ref = self;
+                i = 1;
+            } else if (name.equals("args")) {
+                if (self == null) {
+                    InterpreterError.abort(line);
+                }
 
-            i = 1;
-        } else {
-            ref = Global.getGlobalTable();
-            i = 0;
-        }
-
-        for (; i < names.size() - 1; i++) {
-            name = names.get(i);
-
-            Memory newRef;
-            if (ref.contains(name) && ref.getValue(name) instanceof InstanceValue) {
-                InstanceValue iv = (InstanceValue) ref.getValue(name);
-                newRef = iv.value();
+                ref = args;
+                i = 1;
             } else {
-                // if there are more names, than it must be an instance (object) reference.
-                newRef = new Instance();
-                ref.setValue(name, new InstanceValue((Instance) newRef));
+                ref = Global.getGlobalTable();
+                i = 0;
             }
 
-            ref = newRef;
+            for (; i < names.size() - 1; i++) {
+                name = names.get(i);
+
+                Memory newRef;
+                if (ref.contains(name) && ref.getValue(name) instanceof InstanceValue) {
+                    InstanceValue iv = (InstanceValue) ref.getValue(name);
+                    newRef = iv.value();
+                } else {
+                    // if there are more names, than it must be an instance (object) reference.
+                    newRef = new Instance();
+                    ref.setValue(name, new InstanceValue((Instance) newRef));
+                }
+
+                ref = newRef;
+            }
         }
 
         return ref;
     }
 
-    @Override
+    public String getLastName() {
+        return names.get(names.size() - 1);
+    }
+
+    public boolean isSingleName() {
+        return names.size() == 1;
+    }
+
+    public boolean isSelf() {
+        return this.isSingleName() && this.names.get(0).equals("self");
+    }
+
+    public boolean isArgs() {
+        return this.isSingleName() && this.names.get(0).equals("args");
+    }
+
     public String toString() {
         StringBuffer sb = new StringBuffer(names.get(0));
         for (int i = 1; i < names.size(); i++) {
@@ -99,10 +140,6 @@ public class AccessPath {
         }
 
         return sb.toString();
-    }
-
-    private String getLastName() {
-        return names.get(names.size() - 1);
     }
 
 }
