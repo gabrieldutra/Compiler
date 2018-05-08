@@ -14,5 +14,4 @@ public class IntegerValue extends Value<Integer> {
     public Integer value() {
         return value;
     }
-
 }
