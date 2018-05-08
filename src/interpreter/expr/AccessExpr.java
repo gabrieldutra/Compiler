@@ -18,10 +18,6 @@ public class AccessExpr extends Expr {
 
     @Override
     public Value<?> rhs(Instance self, Arguments args) {
-        Memory mem = path.getReference(self, args);
-        if (mem == self) {
-            return new InstanceValue(self);
-        }
         return path.getValue(self, args);
     }
 

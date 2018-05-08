@@ -29,6 +29,9 @@ public class AccessPath {
 
     public Value<?> getValue(Instance self, Arguments args) {
         String name = this.getLastName();
+        if (name.equals("self")) {
+            return new InstanceValue(self);
+        }
         Memory ref = this.getReference(self, args);
         if (!ref.contains(name)) {
             ref.setValue(name, IntegerValue.Zero);

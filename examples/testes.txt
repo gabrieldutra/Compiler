@@ -1,7 +1,7 @@
-array.soo  [x]
-boxes.soo  [x]
+array.soo  [v]
+boxes.soo  [v]
 cond.soo   [v]
-passby.soo [x]
+passby.soo [v]
 random.soo [v]
 simple.soo [v]
 
