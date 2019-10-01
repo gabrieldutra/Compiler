@@ -1,18 +1,15 @@
-# SmallOO
+# Compiler
 
-TP da disciplina Laboratório de Linguagens de Programação - CEFET/MG
+TP da disciplina Compiladores - CEFET/MG
 
 Alunos:
-- [Gabriel Dutra Dias](https://gabrieldutra.github.io/)
-- [Marcelo Ferreira Cândido](https://github.com/MarceloFCandido)
+- [Gabriel Dutra](https://gabrieldutra.github.io/)
+- [Marcelo Cândido](https://github.com/MarceloFCandido)
+- [Rubio Torres](https://github.com/rubiotorres)
 
 ## Objetivo do trabalho
-O	objetivo	desse	trabalho	é	desenvolver	um	interpretador	para	uma	nova	
-linguagem	 de	 programação	 que	 embute	 ideias	 de	 programação	 orientada	 a	
-objetos:	SmallOO.	Ela	possui	quatro	(4)	 tipos	que	podem	ser	indexados:	inteiros,	
-string,	 objetos	 e	 funções.	 Objetos	 possuem	 propriedades	 que	 podem	 armazenar	
-qualquer	 um	 dos	 tipos	 disponíveis. Funções possuem	 retorno	 e	 podem	 ser	
-chamadas	com	qualquer	quantidade	de	argumentos.
+O	objetivo	desse	trabalho	é	desenvolver	um	interpretador	para	uma	nova
+linguagem	 de	 programação.
 
 ## Exemplo de código .soo
 
