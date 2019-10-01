@@ -9,41 +9,43 @@ public enum TokenType {
     // symbols
     DOT_COMMA,   // ';'
     COMMA,       // ','
-    OPEN_CUR,    // '{'
-    CLOSE_CUR,   // '}'
     OPEN_PAR,    // '('
     CLOSE_PAR,   // ')'
 
     // keywords
+    START,      // start
+    EXIT,       // exit
+    INT,        // int
+    FLOAT,      // float
+    STRING,     // string
     IF,         // if
+    THEN,       // then
     ELSE,       // else
-    WHILE,      // while   
-    FUNCTION,    // fuction def
-    RETURN,      // return
-    SYSTEM,     // var system
-    SELF,       // var self
-    ARGS,       // var args
+    END,        // end
+    DO,         // do
+    WHILE,      // while
+    SCAN,       // scan
+    PRINT,      // print
 
     // operators
-    DOT,        // '.'
-    ATTRIB,     // '='
-    PLUS,       // '+'
-    MINUS,      // '-'
-    MULT,       // '*'
-    DIV,        // '/'
-    MOD,        // '%'
-    LESS,       // '<'
-    GREATER,    // '>'
-    EQUAL,      // '=='
-    LESS_EQ,    // '<='
-    GREATER_EQ, // '>='
-    NOT_EQ,     // '!='
-    NOT,        // '!'
-    AND,        // '&'
-    OR,         // '|'
+    NOT,        // not
+    OR,         // or
+    AND,        // and
+    EQUAL,      // ==
+    NOT_EQUAL,  // <>
+    GREATER,    // >
+    GREATER_EQ, // >=
+    LESS,       // <
+    LESS_EQ,    // <=
+    PLUS,       // +
+    MINUS,      // -
+    ASSIGN,     // =
+    MULT,       // *
+    DIV,        // /
 
     // others
     NAME,
-    NUMBER,
-    STRING
+    FLOAT_CONST,
+    INTEGER_CONST,
+    LITERAL
 };
