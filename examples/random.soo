@@ -1,2 +1,0 @@
-n = system.random(10, 20);
-system.println(n);
