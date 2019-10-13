@@ -1,0 +1,18 @@
+//6º teste
+/* compilador
+    cefet-MG 7º periodo
+*/
+()"{}"
+not "oi"
+start 
+    int ia, ib;
+    float fa;
+    ib = 1;
+     do
+        ib = 1 + ib;
+        print("Digite fa: ");
+        scan(fa);
+        ia = ib + fa * (1 + ib*fa);
+        print(ia);
+     while (pontuacao >= 0)end
+exit
