@@ -21,7 +21,7 @@ start
  a = 2;
  x = 0.1;
  scan (b);
- scan (y)
+ scan (y);
  result = (a*b ++ 1) / 2;
  print "Resultado: ";
  print (result);
