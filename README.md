@@ -27,7 +27,7 @@ start
  print (result);
  print ("Total: ");
  total = y / x;
- print ("Total: ";
+ print ("Total: ");
  print (total);
 exit
 ```
