@@ -1,0 +1,28 @@
+("start", START)
+("Int", NAME)
+("a", NAME)
+(",", COMMA)
+("aux", NAME)
+03: Lexema inválido [$]
+
+
+("start", START)
+("Int", NAME)
+("a", NAME)
+(",", COMMA)
+("aux", NAME)
+(",", COMMA)
+("b", NAME)
+(";", DOT_COMMA)
+("string", STRING)
+("nome", NAME)
+(",", COMMA)
+("sobrenome", NAME)
+(",", COMMA)
+("msg", NAME)
+(";", DOT_COMMA)
+("print", PRINT)
+("(", OPEN_PAR)
+("Nome", NAME)
+05: Lexema inválido [:]
+
