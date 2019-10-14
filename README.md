@@ -19,7 +19,7 @@ start
  int result;
  float a,x,total;
  a = 2;
- x = .1;
+ x = 0.1;
  scan (b);
  scan (y)
  result = (a*b ++ 1) / 2;
