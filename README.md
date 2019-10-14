@@ -17,7 +17,7 @@ linguagem	 de	 programação.
 start
  int a, b;
  int result;
- float a,x,total;
+ float a, x, total;
  a = 2;
  x = 0.1;
  scan (b);
