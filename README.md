@@ -13,7 +13,7 @@ linguagem	 de	 programação.
 
 ## Exemplo de código 
 
-```JavaScript
+```Java
 start
  int a, b;
  int result;
