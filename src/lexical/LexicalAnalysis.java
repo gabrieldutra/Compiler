@@ -194,6 +194,8 @@ public class LexicalAnalysis implements AutoCloseable {
         if (estado == 12) {
             if (st.contains(lex.token)) {
                 lex.type = st.find(lex.token);
+                
+                System.out.printf("Symbol Table\n Nome: %s\n Token Type: %s\n", lex.token,lex.type);
             } else {
                 lex.type = TokenType.NAME;
             }
