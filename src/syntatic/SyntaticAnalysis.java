@@ -225,7 +225,7 @@ public class SyntaticAnalysis {
             matchToken(TokenType.IDENTIFIER);
         } else if (current.type == TokenType.OPEN_PAR) {
             matchToken(TokenType.OPEN_PAR);
-            // procExpression
+            procExpression();
             matchToken(TokenType.CLOSE_PAR);
         } else {
             procConstant();
