@@ -1,0 +1,2 @@
+rubiotorres@Torres-300E5M-300E5L:~/Documents/Compiler/dist$ java -jar Compiler.jar ../examples/teste6resolvidosintatico.tpc 
+03: Lexema não esperado [(]

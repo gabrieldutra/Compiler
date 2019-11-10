@@ -1,0 +1,16 @@
+rubiotorres@Torres-300E5M-300E5L:~/Documents/Compiler/dist$ java -jar Compiler.jar ../examples/teste1resolvidosintatico.tpc 
+09: Lexema não esperado [result]
+rubiotorres@Torres-300E5M-300E5L:~/Documents/Compiler/dist$ java -jar Compiler.jar ../examples/teste1resolvidosintatico.tpc 
+09: Lexema não esperado [result]
+rubiotorres@Torres-300E5M-300E5L:~/Documents/Compiler/dist$ java -jar Compiler.jar ../examples/teste1resolvidosintatico.tpc 
+09: Lexema não esperado [result]
+rubiotorres@Torres-300E5M-300E5L:~/Documents/Compiler/dist$ java -jar Compiler.jar ../examples/teste1resolvidosintatico.tpc 
+09: Lexema não esperado [result]
+rubiotorres@Torres-300E5M-300E5L:~/Documents/Compiler/dist$ java -jar Compiler.jar ../examples/teste1resolvidosintatico.tpc 
+09: Lexema não esperado [print]
+rubiotorres@Torres-300E5M-300E5L:~/Documents/Compiler/dist$ java -jar Compiler.jar ../examples/teste1resolvidosintatico.tpc 
+09: Lexema não esperado [+]
+rubiotorres@Torres-300E5M-300E5L:~/Documents/Compiler/dist$ java -jar Compiler.jar ../examples/teste1resolvidosintatico.tpc 
+10: Lexema não esperado [Resultado: ]
+rubiotorres@Torres-300E5M-300E5L:~/Documents/Compiler/dist$ java -jar Compiler.jar ../examples/teste1resolvidosintatico.tpc 
+14: Lexema não esperado [;]
