@@ -195,7 +195,7 @@ public class LexicalAnalysis implements AutoCloseable {
             if (st.contains(lex.token)) {
                 lex.type = st.find(lex.token);
             } else {
-                lex.type = TokenType.NAME;
+                lex.type = TokenType.IDENTIFIER;
             }
         }
 
