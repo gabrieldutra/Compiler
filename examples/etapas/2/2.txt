@@ -1,0 +1,7 @@
+05: Lexema não esperado [c]
+07: Lexema não esperado [(]
+08: Lexema não esperado [(]
+12: Lexema não esperado [c]
+14: Lexema não esperado [e]
+17: Lexema não esperado [)]
+18: Fim de arquivo inesperado

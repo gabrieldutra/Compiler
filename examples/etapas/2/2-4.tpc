@@ -10,9 +10,8 @@ start
  c = b + a * (1 + a*c);
  print ("Resultado: ");
  print (c);
- d = 34.2;
+ d = 34.2
  e = val + 2.2;
  print ("E: ");
  print (e);
- a = (b + c + d)/2;
-exit
+ a = b + c + d)/2;
