@@ -1,8 +1,0 @@
-rubiotorres@Torres-300E5M-300E5L:~/Documents/Compiler/dist$ java -jar Compiler.jar ../examples/teste4resolvidosintatico.tpc 
-03: Lexema não esperado [a]
-rubiotorres@Torres-300E5M-300E5L:~/Documents/Compiler/dist$ java -jar Compiler.jar ../examples/teste4resolvidosintatico.tpc 
-19: Lexema não esperado [;]
-rubiotorres@Torres-300E5M-300E5L:~/Documents/Compiler/dist$ java -jar Compiler.jar ../examples/teste4resolvidosintatico.tpc 
-19: Lexema não esperado [;]
-rubiotorres@Torres-300E5M-300E5L:~/Documents/Compiler/dist$ java -jar Compiler.jar ../examples/teste4resolvidosintatico.tpc 
-21: Lexema não esperado [(]

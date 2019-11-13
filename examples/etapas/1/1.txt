@@ -1,0 +1,4 @@
+09: Lexema não esperado [result]
+09: Lexema não esperado [+]
+10: Lexema não esperado [Resultado: ]
+14: Lexema não esperado [;]
