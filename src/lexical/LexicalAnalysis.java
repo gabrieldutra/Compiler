@@ -37,12 +37,6 @@ public class LexicalAnalysis implements AutoCloseable {
         while (estado != 12 && estado != 13) {
             int c = input.read();
 
-            // handle unexpected EOF
-            if (c == -1 && estado != 1) {
-                lex.type = TokenType.UNEXPECTED_EOF;
-                break;
-            }
-
             switch (estado) {
                 case 1:
                     // jump undesired characters
@@ -52,7 +46,7 @@ public class LexicalAnalysis implements AutoCloseable {
                         line++;
                     } else if (c == '\"') {
                         estado = 2;
-                    } else if (Character.isLetter(c)) {
+                    } else if (Character.isLetter(c) && c != 255) {
                         lex.token += (char) c;
                         estado = 3;
                     } else if (Character.isDigit(c)) {
@@ -72,7 +66,7 @@ public class LexicalAnalysis implements AutoCloseable {
                     } else if (c == '/') {
                         lex.token += (char) c;
                         estado = 8;
-                    } else if (c == -1) {
+                    } else if (c == -1 || c == 255) {
                         lex.type = TokenType.END_OF_FILE;
                         estado = 13;
                     } else {
@@ -195,7 +189,7 @@ public class LexicalAnalysis implements AutoCloseable {
             if (st.contains(lex.token)) {
                 lex.type = st.find(lex.token);
             } else {
-                lex.type = TokenType.NAME;
+                lex.type = TokenType.IDENTIFIER;
             }
         }
 

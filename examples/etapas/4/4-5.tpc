@@ -1,6 +1,6 @@
 start
 
- Int a, aux, b;
+ int a, aux, b;
  string nome, sobrenome, msg;
  print("Nome: ");
  scan (nome);
@@ -16,8 +16,8 @@ sobrenome + "!";
  aux = b;
  b = a;
  a = aux;
- end;
- print ("Apos a troca: ");
+ end
+ print ("Apos a troca: ”);
  out(a);
  out(b)
 exit

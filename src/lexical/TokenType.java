@@ -44,7 +44,7 @@ public enum TokenType {
     DIV,        // /
 
     // others
-    NAME,
+    IDENTIFIER,
     FLOAT_CONST,
     INTEGER_CONST,
     LITERAL

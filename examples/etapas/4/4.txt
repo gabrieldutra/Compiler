@@ -1,0 +1,7 @@
+03: Lexema não esperado [a]
+03: Lexema inválido [$]
+05: Lexema inválido [:]
+10: Lexema não esperado [Apos]
+19: Lexema não esperado [;]
+22: Lexema não esperado [(]
+23: Lexema não esperado [exit]
