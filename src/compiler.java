@@ -1,6 +1,6 @@
-import lexical.Lexeme;
 import lexical.LexicalAnalysis;
 import lexical.TokenType;
+import model.Type;
 import syntatic.SyntaticAnalysis;
 
 public class compiler {
