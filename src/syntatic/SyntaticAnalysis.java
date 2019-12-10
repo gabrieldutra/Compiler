@@ -1,11 +1,17 @@
 package syntatic;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import lexical.Lexeme;
 import lexical.LexicalAnalysis;
 import lexical.TokenType;
+import model.Const;
+import model.Identifier;
+import model.Type;
+import semantic.SemanticAnalysis;
 
 /**
  *
@@ -13,6 +19,7 @@ import lexical.TokenType;
  */
 public class SyntaticAnalysis {
     private LexicalAnalysis lex;
+    private SemanticAnalysis sem;
     private Lexeme current;
     
     /**
@@ -21,6 +28,7 @@ public class SyntaticAnalysis {
      */
     public SyntaticAnalysis(LexicalAnalysis lex) throws IOException {
         this.lex = lex;
+        this.sem = new SemanticAnalysis(lex);
         this.current = lex.nextToken();
     }
     
@@ -33,17 +41,20 @@ public class SyntaticAnalysis {
      * Marca o lexema corrente com o tipo passado por parametro, caso se trate
      * do tipo correto
      */
-    private void matchToken(TokenType type) {
-        // System.out.println("Match token: " + current.type + " == " + type + "?");
+    private Lexeme matchToken(TokenType type) {
+//         System.out.println(lex.getLine() + " - Match token: " + current.type + " == " + type + "?");
         if (type == current.type) {
             try {
+                Lexeme previous = current;
                 current = lex.nextToken();
+                return previous;
             } catch (IOException ex) {
                 System.out.printf("Erro: Exceçao de IO na leitura do token\n");
             }
         } else {
             showError();
         }
+        return null;
     }
     
      /*
@@ -87,24 +98,29 @@ public class SyntaticAnalysis {
     
     private void procDeclList() {
         do {
-            procType();
-            matchToken(TokenType.IDENTIFIER);
+            Type type = procType();
+            Lexeme lexeme = matchToken(TokenType.IDENTIFIER);
+            sem.procDecl(new Identifier(lexeme.token, type));
             while (current.type == TokenType.COMMA) {
                 matchToken(TokenType.COMMA);
-                matchToken(TokenType.IDENTIFIER);
+                lexeme = matchToken(TokenType.IDENTIFIER);
+                sem.procDecl(new Identifier(lexeme.token, type));
             }
             matchToken(TokenType.DOT_COMMA);
+            
         } while (current.type == TokenType.INT || current.type == TokenType.FLOAT || current.type == TokenType.STRING);
     }
 
-    private void procType() {
+    private Type procType() {
         if (current.type == TokenType.INT) {
             matchToken(TokenType.INT);
+            return Type.INT;
         } else if (current.type == TokenType.FLOAT) {
             matchToken(TokenType.FLOAT);
-        } else {
-            matchToken(TokenType.STRING);
+            return Type.FLOAT;
         }
+        matchToken(TokenType.STRING);
+        return Type.STRING;
     }
     
     private void procAssignStmt() {
@@ -180,56 +196,75 @@ public class SyntaticAnalysis {
     }
     
     // expression ::= simple-expr { relop simple-expr }
-    private void procExpression() {
-        procSimpleExpr();
+    private Const procExpression() {
+        Const expression = procSimpleExpr();
 
         while (current.type == TokenType.EQUAL || current.type == TokenType.GREATER ||
             current.type == TokenType.GREATER_EQ || current.type == TokenType.LESS ||
             current.type == TokenType.LESS_EQ || current.type == TokenType.NOT_EQUAL) {
+            TokenType op = current.type;
             procRelop();
-            procSimpleExpr();
+            Const operationExp = procSimpleExpr();
+            expression = sem.procExpressionWithRelop(expression, operationExp, op);
         }
+        return expression;
     }
     
     // simple-expr ::= term { addop term }
-    private void procSimpleExpr() {
-        procTerm();
+    private Const procSimpleExpr() {
+        Const term = procTerm();
 
         while (current.type == TokenType.PLUS || current.type == TokenType.MINUS ||
             current.type == TokenType.OR) {
+            TokenType op = current.type;
             procAddop();
-            procTerm();
+            Const addTerm = procTerm();
+            term = sem.procTermWithSimpleExpr(term, addTerm, op);
         }
+        return term;
     }
     
     // term ::= factor-a { mulop factor-a }
-    private void procTerm() {
-        procFactorA();
+    private Const procTerm() {
+        Const factor = procFactorA();
 
         while (current.type == TokenType.MULT || current.type == TokenType.DIV ||
             current.type == TokenType.AND) {
+            TokenType op = current.type;
             procMulop();
-            procFactorA();
+            Const mulFactor = procFactorA();
+            factor = sem.procFactorWithMulop(factor, mulFactor, op);
         }
+        return factor;
     }
     
-    private void procFactorA() {
+    private Const procFactorA() {
+        TokenType extraToken = null;
         if (current.type == TokenType.NOT || current.type == TokenType.MINUS) {
+            extraToken = current.type;
             matchToken(current.type);
         }
-        procFactor();
+        Const factorConst = procFactor();
+        if (extraToken == TokenType.NOT) {
+            return sem.procFactorWithNot(factorConst);
+        }
+        if (extraToken == TokenType.MINUS) {
+            return sem.procFactorWithMinus(factorConst);
+        }
+        return factorConst;
     }
     
-    private void procFactor() {
+    private Const procFactor() {
         if (current.type == TokenType.IDENTIFIER) {
-            matchToken(TokenType.IDENTIFIER);
+            Lexeme lexeme = matchToken(TokenType.IDENTIFIER);
+            return sem.procFactorWithIdentifier(lexeme.token);
         } else if (current.type == TokenType.OPEN_PAR) {
             matchToken(TokenType.OPEN_PAR);
-            procExpression();
+            Const expValue = procExpression();
             matchToken(TokenType.CLOSE_PAR);
-        } else {
-            procConstant();
+            return expValue;
         }
+        return procConstant();
     }
     
     private void procRelop() {
@@ -262,25 +297,24 @@ public class SyntaticAnalysis {
         }
     }
     
-    private void procConstant() {
+    private Const procConstant() {
         if (current.type == TokenType.INTEGER_CONST) {
-            procIntegerConst();
+            return procIntegerConst();
         } else if (current.type == TokenType.FLOAT_CONST) {
-            procFloatConst();
-        } else {
-            procLiteral();
+            return procFloatConst();
         }
+        return procLiteral();
     }
     
-    private void procIntegerConst() {
-        matchToken(TokenType.INTEGER_CONST);
+    private Const procIntegerConst() {
+        return new Const(Integer.parseInt(matchToken(TokenType.INTEGER_CONST).token), Type.INT);
     }
     
-    private void procFloatConst() {
-        matchToken(TokenType.FLOAT_CONST);
+    private Const procFloatConst() {
+        return new Const(Float.parseFloat(matchToken(TokenType.FLOAT_CONST).token), Type.FLOAT);
     }
     
-    private void procLiteral() {
-        matchToken(TokenType.LITERAL);
+    private Const procLiteral() {
+        return new Const(matchToken(TokenType.LITERAL).token, Type.STRING);
     }
 }
